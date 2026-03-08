@@ -9,7 +9,7 @@ const navItems = [
   { label: 'Experience', href: '#experience' },
   { label: 'Volunteering', href: '#volunteering' },
   { label: 'Media', href: '#media' },
-  { label: 'Awards', href: '#awards' },
+  { label: 'Certifications', href: '#awards' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -53,7 +53,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glass-strong shadow-lg shadow-black/20' : 'bg-transparent'
+        scrolled ? 'bg-white/90 backdrop-blur-xl shadow-md shadow-[#0F3557]/5 border-b border-[#D6ECFF]' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,11 +65,8 @@ export default function Navbar() {
             className="flex items-center gap-2 group"
           >
             <span className="text-xl font-bold">
-              <span className="text-glacier">S</span>
-              <span className="text-text-primary">uhail</span>
-            </span>
-            <span className="hidden sm:inline-block text-xs font-mono text-text-muted group-hover:text-glacier transition-colors">
-              // geo.ai
+              <span className="text-[#0F3557]">Suhail</span>
+              <span className="text-[#4FA3D9]"> Khan</span>
             </span>
           </a>
 
@@ -82,10 +79,10 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 group ${
+                  className={`relative px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 group ${
                     isActive
-                      ? 'text-cyan-neon'
-                      : 'text-text-secondary hover:text-text-primary'
+                      ? 'text-[#0F3557]'
+                      : 'text-[#64748b] hover:text-[#0F3557]'
                   }`}
                 >
                   {item.label}
@@ -93,14 +90,11 @@ export default function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-glacier/10 rounded-full border border-glacier/20"
+                      className="absolute inset-0 bg-[#D6ECFF]/60 rounded-full border border-[#4FA3D9]/20"
                       initial={false}
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
-                  
-                  {/* Hover Indicator */}
-                  <div className="absolute inset-0 bg-space-600/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               )
             })}
@@ -109,7 +103,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg text-text-secondary hover:text-glacier transition-colors"
+            className="md:hidden p-2 rounded-lg text-[#64748b] hover:text-[#0F3557] transition-colors"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -123,7 +117,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong border-t border-glacier/10"
+            className="md:hidden bg-white/95 backdrop-blur-xl border-t border-[#D6ECFF]"
           >
             <div className="px-4 py-4 space-y-1">
               {navItems.map((item) => (
@@ -133,8 +127,8 @@ export default function Navbar() {
                   onClick={(e) => handleClick(e, item.href)}
                   className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                     activeSection === item.href.replace('#', '')
-                      ? 'text-glacier bg-glacier/5'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
+                      ? 'text-[#0F3557] bg-[#D6ECFF]/40'
+                      : 'text-[#64748b] hover:text-[#0F3557] hover:bg-[#E6EDF2]/50'
                   }`}
                 >
                   {item.label}

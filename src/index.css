@@ -1,30 +1,43 @@
 @import "tailwindcss";
 
-/* ===== DESIGN TOKENS ===== */
+/* ===== DESIGN TOKENS – Scientific Academic Palette ===== */
 @theme {
-  --color-space-900: #020617; /* Slate 950 - deeper black/blue */
-  --color-space-800: #0f172a; /* Slate 900 */
-  --color-space-700: #1e293b; /* Slate 800 */
-  --color-space-600: #334155; /* Slate 700 */
-  --color-space-500: #475569; /* Slate 600 */
-  
-  --color-glacier: #38bdf8; /* Sky 400 - Main Glacier */
-  --color-glacier-dark: #0284c7; /* Sky 600 */
-  --color-glacier-light: #7dd3fc; /* Sky 300 */
-  
-  --color-cyan-neon: #22d3ee; /* Cyan 400 */
-  --color-cyan-deep: #0891b2; /* Cyan 600 */
-  
-  /* Retaining these names for compatibility but redefining them to fit the blue/glacier theme */
-  --color-laser: #3b82f6; /* Blue 500 */
-  --color-laser-bright: #60a5fa; /* Blue 400 */
-  --color-aurora: #0ea5e9; /* Sky 500 */
-  --color-warm-accent: #0284c7; /* Sky 600 */
+  /* Primary Colors */
+  --color-glacier-white: #F5FAFF;
+  --color-ice-blue: #D6ECFF;
+  --color-deep-ocean: #0F3557;
 
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #94a3b8;
-  
+  /* Secondary Colors */
+  --color-ocean-green: #2F8F9D;
+  --color-arctic-blue: #4FA3D9;
+  --color-soft-grey: #E6EDF2;
+
+  /* Accent */
+  --color-polar-cyan: #00B4D8;
+
+  /* Legacy aliases (for Tailwind class compatibility) */
+  --color-space-900: #F5FAFF;
+  --color-space-800: #FFFFFF;
+  --color-space-700: #E6EDF2;
+  --color-space-600: #D6ECFF;
+  --color-space-500: #94a3b8;
+
+  --color-glacier: #4FA3D9;
+  --color-glacier-dark: #0F3557;
+  --color-glacier-light: #D6ECFF;
+
+  --color-cyan-neon: #00B4D8;
+  --color-cyan-deep: #2F8F9D;
+
+  --color-laser: #0F3557;
+  --color-laser-bright: #4FA3D9;
+  --color-aurora: #2F8F9D;
+  --color-warm-accent: #00B4D8;
+
+  --color-text-primary: #0F3557;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -38,13 +51,13 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-space-900);
+  background-color: var(--color-glacier-white);
 }
 
 body {
   font-family: var(--font-sans);
   color: var(--color-text-primary);
-  background-color: var(--color-space-900);
+  background-color: var(--color-glacier-white);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,72 +68,74 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-space-900);
+  background: var(--color-glacier-white);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-space-500);
+  background: var(--color-arctic-blue);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-glacier);
+  background: var(--color-deep-ocean);
 }
 
-/* ===== GLASSMORPHISM UTILITY ===== */
+/* ===== CARD STYLES (Replacing Glassmorphism) ===== */
 .glass {
-  background: rgba(15, 21, 37, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(56, 189, 248, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(214, 236, 255, 0.6);
 }
 
 .glass-strong {
-  background: rgba(15, 21, 37, 0.8);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(214, 236, 255, 0.8);
+  box-shadow: 0 4px 24px rgba(15, 53, 87, 0.06);
 }
 
 .glass-card {
-  background: rgba(17, 24, 39, 0.5);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(56, 189, 248, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(214, 236, 255, 0.5);
   border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(15, 53, 87, 0.06);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(56, 189, 248, 0.25);
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.08), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: rgba(79, 163, 217, 0.4);
+  box-shadow: 0 8px 32px rgba(15, 53, 87, 0.1);
   transform: translateY(-2px);
 }
 
 /* ===== GRADIENT TEXT ===== */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-glacier) 0%, var(--color-cyan-neon) 50%, var(--color-laser) 100%);
+  background: linear-gradient(135deg, var(--color-deep-ocean) 0%, var(--color-arctic-blue) 50%, var(--color-polar-cyan) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(135deg, var(--color-glacier) 0%, var(--color-laser) 100%);
+  background: linear-gradient(135deg, var(--color-ocean-green) 0%, var(--color-arctic-blue) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ===== GLOW EFFECTS ===== */
+/* ===== SUBTLE SHADOW EFFECTS ===== */
 .glow-glacier {
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15), 0 0 60px rgba(56, 189, 248, 0.05);
+  box-shadow: 0 4px 20px rgba(79, 163, 217, 0.12);
 }
 
 .glow-laser {
-  box-shadow: 0 0 20px rgba(167, 139, 250, 0.15), 0 0 60px rgba(167, 139, 250, 0.05);
+  box-shadow: 0 4px 20px rgba(47, 143, 157, 0.12);
 }
 
 .text-glow {
-  text-shadow: 0 0 30px rgba(56, 189, 248, 0.4), 0 0 60px rgba(56, 189, 248, 0.1);
+  text-shadow: none;
 }
 
 /* ===== ANIMATED BORDER ===== */
@@ -135,7 +150,7 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, var(--color-glacier), transparent, var(--color-laser));
+  background: linear-gradient(135deg, var(--color-arctic-blue), transparent, var(--color-ocean-green));
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
@@ -152,16 +167,16 @@ body {
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6rem 1.5rem;
+  padding: 5rem 1.5rem;
 }
 
 @media (min-width: 768px) {
   .section-container {
-    padding: 8rem 2rem;
+    padding: 6rem 2rem;
   }
 }
 
-/* ===== PARTICLES CANVAS ===== */
+/* ===== 3D CANVAS ===== */
 .three-canvas {
   position: fixed !important;
   top: 0;
@@ -170,42 +185,7 @@ body {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-}
-
-/* ===== TIMELINE ===== */
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, transparent 0%, var(--color-glacier) 10%, var(--color-laser) 90%, transparent 100%);
-  transform: translateX(-50%);
-}
-
-@media (max-width: 768px) {
-  .timeline-line {
-    left: 1.5rem;
-  }
-}
-
-.timeline-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--color-glacier);
-  border: 2px solid var(--color-space-900);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-@media (max-width: 768px) {
-  .timeline-dot {
-    left: 1.5rem;
-  }
+  opacity: 0.3;
 }
 
 /* ===== MASONRY GRID ===== */
@@ -234,17 +214,12 @@ body {
 /* ===== SUBTLE ANIMATIONS ===== */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-@keyframes scan-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
 .animate-float {

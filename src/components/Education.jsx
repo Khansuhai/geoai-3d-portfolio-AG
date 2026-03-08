@@ -33,7 +33,7 @@ const educationData = [
     logo: '/assets/img/KV%20SCHOOL%20LOGO.jpg',
     cgpa: '7.26 / 10',
     achievements: [
-      'Best Presenter – 26th National Children’s Science Congress',
+      'Best Presenter – 26th National Children\'s Science Congress',
       'School Player – Volleyball and Basketball',
       'Won 2 Gold Medals in Annual Sports Meets'
     ]
@@ -50,7 +50,7 @@ export default function Education() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="education" className="relative z-10 py-8">
+    <section id="education" className="relative z-10 py-8 bg-[#F5FAFF]">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
@@ -60,13 +60,13 @@ export default function Education() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs font-mono text-cyan-neon tracking-[0.3em] uppercase mb-4">
-            // Academic Foundations
+          <span className="inline-block text-xs font-mono text-[#2F8F9D] tracking-[0.3em] uppercase mb-4">
+            Academic Foundations
           </span>
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6">
-            <span className="gradient-text">Education</span>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#0F3557]">
+            Education
           </h2>
-          <p className="text-text-secondary text-lg sm:text-xl max-w-3xl mx-auto">
+          <p className="text-[#64748b] text-lg sm:text-xl max-w-3xl mx-auto">
             My academic progression in the geospatial and earth sciences field.
           </p>
         </motion.div>
@@ -81,11 +81,11 @@ export default function Education() {
               variants={fadeInUp}
               transition={{ duration: 0.6, delay: index * 0.15 }}
             >
-              <div className="glass-card h-full p-8 border border-glacier/20 hover:border-cyan-neon/40 transition-colors flex flex-col group">
+              <div className="bg-white h-full p-8 border border-[#D6ECFF] rounded-2xl shadow-sm hover:shadow-lg hover:border-[#4FA3D9]/40 transition-all flex flex-col group">
                 
                 {/* Logo Area */}
                 <div className="mb-8 h-20 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-white p-1 shadow-lg shadow-cyan-neon/10 group-hover:scale-105 transition-transform duration-500 overflow-hidden flex items-center justify-center relative">
+                  <div className="w-20 h-20 rounded-full bg-[#F5FAFF] p-1 shadow-md border border-[#D6ECFF] group-hover:scale-105 transition-transform duration-500 overflow-hidden flex items-center justify-center">
                     <img 
                       src={item.logo} 
                       alt={item.institution} 
@@ -96,30 +96,30 @@ export default function Education() {
 
                 {/* Content */}
                 <div className="flex-grow flex flex-col text-center">
-                  <span className="inline-block px-3 py-1 rounded-full bg-space-600/50 text-xs font-mono text-glacier mb-4 w-fit mx-auto border border-space-500/30">
+                  <span className="inline-block px-3 py-1 rounded-full bg-[#D6ECFF]/50 text-xs font-mono text-[#2F8F9D] mb-4 w-fit mx-auto border border-[#D6ECFF]">
                     {item.period}
                   </span>
                   
-                  <h3 className="text-xl font-bold text-text-primary mb-3">
+                  <h3 className="text-xl font-bold text-[#0F3557] mb-3">
                     {item.degree}
                   </h3>
                   
-                  <p className="text-sm font-medium text-text-secondary mb-6">
+                  <p className="text-sm font-medium text-[#64748b] mb-6">
                     {item.institution}
                   </p>
 
-                  <div className="mt-auto px-4 py-3 rounded-lg bg-glacier/5 border border-glacier/10 mb-6">
-                    <span className="text-sm font-bold text-cyan-neon">CGPA: {item.cgpa}</span>
+                  <div className="mt-auto px-4 py-3 rounded-lg bg-[#D6ECFF]/30 border border-[#D6ECFF] mb-6">
+                    <span className="text-sm font-bold text-[#0F3557]">CGPA: {item.cgpa}</span>
                   </div>
 
                   <div className="text-left">
-                    <h4 className="text-xs font-mono uppercase text-glacier tracking-wider mb-3 pl-1 border-l-2 border-cyan-neon">
+                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-3 pl-1 border-l-2 border-[#00B4D8]">
                       Achievements &amp; Roles
                     </h4>
                     <ul className="space-y-2">
                       {item.achievements.map((achievement, i) => (
-                        <li key={i} className="text-xs text-text-secondary flex items-start gap-2">
-                          <span className="text-cyan-neon mt-1">•</span>
+                        <li key={i} className="text-xs text-[#334155] flex items-start gap-2">
+                          <span className="text-[#00B4D8] mt-1">•</span>
                           <span className="leading-relaxed">{achievement}</span>
                         </li>
                       ))}

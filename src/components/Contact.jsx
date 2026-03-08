@@ -3,12 +3,12 @@ import { useRef } from 'react'
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Facebook, Instagram, ExternalLink, Globe } from 'lucide-react'
 
 const socialLinks = [
-  { icon: Globe, href: 'https://khansuhai.github.io', label: 'Website', color: 'hover:text-glacier' },
-  { icon: Github, href: 'https://github.com/Khansuhai', label: 'GitHub', color: 'hover:text-text-primary' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/suhailkhan143/', label: 'LinkedIn', color: 'hover:text-cyan-neon' },
-  { icon: Instagram, href: 'https://www.instagram.com/suhail.tiff/', label: 'Instagram', color: 'hover:text-glacier-dark' },
-  { icon: Twitter, href: 'https://twitter.com/suhailk49329508', label: 'Twitter / X', color: 'hover:text-glacier' },
-  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=100010547910065', label: 'Facebook', color: 'hover:text-glacier-dark' },
+  { icon: Globe, href: 'https://khansuhai.github.io', label: 'Website', color: 'hover:text-[#4FA3D9]' },
+  { icon: Github, href: 'https://github.com/Khansuhai', label: 'GitHub', color: 'hover:text-[#0F3557]' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/suhailkhan143/', label: 'LinkedIn', color: 'hover:text-[#00B4D8]' },
+  { icon: Instagram, href: 'https://www.instagram.com/suhail.tiff/', label: 'Instagram', color: 'hover:text-[#2F8F9D]' },
+  { icon: Twitter, href: 'https://twitter.com/suhailk49329508', label: 'Twitter / X', color: 'hover:text-[#4FA3D9]' },
+  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=100010547910065', label: 'Facebook', color: 'hover:text-[#0F3557]' },
 ]
 
 const fadeInUp = {
@@ -21,7 +21,7 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="contact" className="relative z-10 py-8">
+    <section id="contact" className="relative z-10 py-8 bg-[#0F3557]">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
@@ -31,13 +31,13 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs font-mono text-glacier tracking-[0.3em] uppercase mb-3">
-            // Get In Touch
+          <span className="inline-block text-xs font-mono text-[#4FA3D9] tracking-[0.3em] uppercase mb-3">
+            Get In Touch
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold gradient-text mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Let's Connect
           </h2>
-          <p className="text-text-muted max-w-2xl mx-auto">
+          <p className="text-[#94a3b8] max-w-2xl mx-auto">
             Open to research collaborations, thesis discussions, and geospatial projects
           </p>
         </motion.div>
@@ -51,24 +51,24 @@ export default function Contact() {
                 label: 'Email',
                 value: 'Ksuhail55555@gmail.com',
                 href: 'mailto:Ksuhail55555@gmail.com',
-                color: 'text-glacier',
-                bgColor: 'bg-glacier/10',
+                color: 'text-[#4FA3D9]',
+                bgColor: 'bg-[#4FA3D9]/10',
               },
               {
                 icon: Phone,
                 label: 'Phone',
                 value: '+91 9084407350, +91 9906378305',
                 href: 'tel:+919084407350',
-                color: 'text-cyan-neon',
-                bgColor: 'bg-cyan-neon/10',
+                color: 'text-[#00B4D8]',
+                bgColor: 'bg-[#00B4D8]/10',
               },
               {
                 icon: MapPin,
                 label: 'Location',
                 value: 'Market Street, H-205 Village Harpal, Saharanpur – 247001, India',
                 href: null,
-                color: 'text-glacier',
-                bgColor: 'bg-glacier/10',
+                color: 'text-[#4FA3D9]',
+                bgColor: 'bg-[#4FA3D9]/10',
               },
             ].map((item, index) => (
               <motion.div
@@ -80,23 +80,23 @@ export default function Contact() {
               >
                 {item.href ? (
                   <a href={item.href} className="block group">
-                    <div className="glass-card p-5 text-center h-full">
+                    <div className="bg-white/10 backdrop-blur-md p-5 text-center h-full rounded-2xl border border-white/10 hover:border-[#4FA3D9]/40 transition-all">
                       <div className={`${item.bgColor} p-3 rounded-xl w-fit mx-auto mb-3`}>
                         <item.icon className={`w-5 h-5 ${item.color}`} />
                       </div>
-                      <p className="text-xs text-text-muted mb-1">{item.label}</p>
-                      <p className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">
+                      <p className="text-xs text-[#94a3b8] mb-1">{item.label}</p>
+                      <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
                         {item.value}
                       </p>
                     </div>
                   </a>
                 ) : (
-                  <div className="glass-card p-5 text-center h-full">
+                  <div className="bg-white/10 backdrop-blur-md p-5 text-center h-full rounded-2xl border border-white/10">
                     <div className={`${item.bgColor} p-3 rounded-xl w-fit mx-auto mb-3`}>
                       <item.icon className={`w-5 h-5 ${item.color}`} />
                     </div>
-                    <p className="text-xs text-text-muted mb-1">{item.label}</p>
-                    <p className="text-sm font-medium text-text-secondary">{item.value}</p>
+                    <p className="text-xs text-[#94a3b8] mb-1">{item.label}</p>
+                    <p className="text-sm font-medium text-white/80">{item.value}</p>
                   </div>
                 )}
               </motion.div>
@@ -109,9 +109,9 @@ export default function Contact() {
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeInUp}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="glass-card p-6 text-center"
+            className="bg-white/5 backdrop-blur-md p-6 text-center rounded-2xl border border-white/10"
           >
-            <p className="text-xs font-mono text-text-muted tracking-wider uppercase mb-5">
+            <p className="text-xs font-mono text-[#94a3b8] tracking-wider uppercase mb-5">
               Connect on Social
             </p>
             <div className="flex items-center justify-center gap-4 flex-wrap">
@@ -121,7 +121,7 @@ export default function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group flex items-center gap-2 glass px-4 py-2.5 rounded-xl text-text-muted ${link.color} transition-all duration-300 hover:-translate-y-0.5`}
+                  className={`group flex items-center gap-2 bg-white/10 px-4 py-2.5 rounded-xl text-[#94a3b8] ${link.color} transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15`}
                   aria-label={link.label}
                 >
                   <link.icon className="w-4 h-4" />
@@ -139,14 +139,14 @@ export default function Contact() {
           animate={isInView ? 'visible' : 'hidden'}
           variants={fadeInUp}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-20 pt-8 border-t border-space-600/30 text-center"
+          className="mt-20 pt-8 border-t border-white/10 text-center"
         >
-          <p className="text-xs text-text-muted">
+          <p className="text-xs text-[#94a3b8]">
             <span className="font-mono">©</span> {new Date().getFullYear()} Suhail Khan
-            <span className="mx-2 text-space-500">•</span>
-            <span className="gradient-text font-medium">Cloud Geographer &amp; GeoAI Specialist</span>
+            <span className="mx-2 text-white/20">•</span>
+            <span className="text-[#4FA3D9] font-medium">Cloud Geographer &amp; GeoAI Specialist</span>
           </p>
-          <p className="text-[10px] text-text-muted/50 mt-2 font-mono">
+          <p className="text-[10px] text-[#64748b] mt-2 font-mono">
             Built with React · Three.js · Framer Motion
           </p>
         </motion.div>

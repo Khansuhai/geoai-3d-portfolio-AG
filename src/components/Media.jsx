@@ -1,6 +1,5 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Image as ImageIcon } from 'lucide-react'
 
 const mediaItems = [
   { url: '/assets/img/IMAGE%20-1%20.png' },
@@ -34,11 +33,11 @@ function MediaCard({ item, index }) {
       transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.4) }}
       className="masonry-item mb-6"
     >
-      <div className="block group cursor-pointer overflow-hidden rounded-xl border border-glacier/20 glass-card">
+      <div className="block group cursor-pointer overflow-hidden rounded-xl border border-[#D6ECFF] bg-white shadow-sm hover:shadow-lg transition-shadow">
         <img
           src={item.url}
           alt={`Gallery image ${index + 1}`}
-          className="w-full h-auto block transition-transform duration-700 group-hover:scale-105 filter contrast-[1.05] saturate-[1.05]"
+          className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
         />
       </div>
@@ -51,7 +50,7 @@ export default function Media() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="media" className="relative z-10 py-8">
+    <section id="media" className="relative z-10 py-8 bg-[#F5FAFF]">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
@@ -61,13 +60,13 @@ export default function Media() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs font-mono text-cyan-neon tracking-[0.3em] uppercase mb-4">
-            // Fieldwork &amp; Research Gallery
+          <span className="inline-block text-xs font-mono text-[#2F8F9D] tracking-[0.3em] uppercase mb-4">
+            Fieldwork &amp; Research Gallery
           </span>
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6">
-            <span className="gradient-text">Visual Chronicles</span>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#0F3557]">
+            Visual Chronicles
           </h2>
-          <p className="text-text-secondary text-lg sm:text-xl max-w-3xl mx-auto">
+          <p className="text-[#64748b] text-lg sm:text-xl max-w-3xl mx-auto">
             Glimpses into high-altitude expeditions, data capturing, and GeoAI development
           </p>
         </motion.div>
