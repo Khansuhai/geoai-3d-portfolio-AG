@@ -31,13 +31,12 @@ function MediaCard({ item, index }) {
       animate={isInView ? 'visible' : 'hidden'}
       variants={fadeInUp}
       transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.4) }}
-      className="masonry-item mb-6"
     >
-      <div className="block group cursor-pointer overflow-hidden rounded-xl border border-[#D6ECFF] bg-white shadow-sm hover:shadow-lg transition-shadow">
+      <div className="block group cursor-pointer overflow-hidden rounded-xl border border-[#D6ECFF] bg-white shadow-sm hover:shadow-lg transition-shadow aspect-[4/3]">
         <img
           src={item.url}
           alt={`Gallery image ${index + 1}`}
-          className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
         />
       </div>

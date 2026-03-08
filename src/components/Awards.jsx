@@ -2,16 +2,17 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Award, CheckCircle2 } from 'lucide-react'
 
-function OrgLogo({ domain, alt }) {
+function OrgLogo({ domain, alt, orgName }) {
   const handleError = (e) => {
     const img = e.target
     if (img.src.includes('google.com')) {
       img.src = `https://logo.clearbit.com/${domain}`
     } else {
       img.style.display = 'none'
-      img.nextSibling.style.display = 'block'
+      img.nextSibling.style.display = 'flex'
     }
   }
+  const initial = orgName ? orgName.charAt(0).toUpperCase() : 'O'
   return (
     <>
       <img
@@ -20,7 +21,9 @@ function OrgLogo({ domain, alt }) {
         className="w-8 h-8 object-contain"
         onError={handleError}
       />
-      <Award className="w-6 h-6 text-[#4FA3D9] hidden" />
+      <div className="w-8 h-8 bg-gradient-to-br from-[#4FA3D9] to-[#2F8F9D] text-white hidden items-center justify-center rounded-md text-sm font-bold">
+        {initial}
+      </div>
     </>
   )
 }
@@ -160,7 +163,7 @@ export default function Awards() {
                 {/* Organization Header */}
                 <div className="flex items-center gap-4 mb-5 pb-5 border-b border-[#E6EDF2]">
                  <div className="w-12 h-12 rounded-lg bg-[#F5FAFF] flex items-center justify-center overflow-hidden flex-shrink-0 border border-[#D6ECFF]">
-                    <OrgLogo domain={group.domain} alt={`${group.organization} logo`} />
+                    <OrgLogo domain={group.domain} alt={`${group.organization} logo`} orgName={group.organization} />
                   </div>
                   <h3 className="text-lg font-bold text-[#0F3557] leading-tight">
                     {group.organization}

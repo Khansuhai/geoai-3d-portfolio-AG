@@ -35,7 +35,7 @@ function ParticleField() {
         size={0.06}
         sizeAttenuation
         depthWrite={false}
-        opacity={0.35}
+        opacity={0.5}
       />
     </Points>
   )
@@ -74,7 +74,7 @@ function SatelliteNodes() {
         size={0.2}
         sizeAttenuation
         depthWrite={false}
-        opacity={0.5}
+        opacity={0.7}
       />
     </Points>
   )
@@ -103,7 +103,7 @@ function GlobeWireframe() {
         <meshBasicMaterial
           color="#D6ECFF"
           transparent
-          opacity={0.15}
+          opacity={0.25}
           side={THREE.BackSide}
         />
       </Sphere>
@@ -113,23 +113,23 @@ function GlobeWireframe() {
           color="#4FA3D9"
           wireframe
           transparent
-          opacity={0.2}
+          opacity={0.35}
         />
       </Sphere>
       {/* Orbit ring 1 */}
       <mesh rotation={[Math.PI / 2.5, 0, 0]}>
         <torusGeometry args={[6.5, 0.015, 8, 100]} />
-        <meshBasicMaterial color="#00B4D8" transparent opacity={0.35} />
+        <meshBasicMaterial color="#00B4D8" transparent opacity={0.5} />
       </mesh>
       {/* Orbit ring 2 */}
       <mesh rotation={[Math.PI / 1.8, 0.5, 0.3]}>
         <torusGeometry args={[7.2, 0.015, 8, 100]} />
-        <meshBasicMaterial color="#2F8F9D" transparent opacity={0.25} />
+        <meshBasicMaterial color="#2F8F9D" transparent opacity={0.4} />
       </mesh>
       {/* Orbit ring 3 */}
       <mesh rotation={[Math.PI / 3, -0.3, 0.6]}>
         <torusGeometry args={[7.8, 0.012, 8, 100]} />
-        <meshBasicMaterial color="#4FA3D9" transparent opacity={0.2} />
+        <meshBasicMaterial color="#4FA3D9" transparent opacity={0.35} />
       </mesh>
     </group>
   )

@@ -21,7 +21,7 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-function OrgLogo({ domain, alt }) {
+function OrgLogo({ domain, alt, orgName }) {
   const handleError = (e) => {
     const img = e.target
     if (img.src.includes('google.com')) {
@@ -31,6 +31,7 @@ function OrgLogo({ domain, alt }) {
       img.nextSibling.style.display = 'flex'
     }
   }
+  const initial = orgName ? orgName.charAt(0).toUpperCase() : 'O'
   return (
     <>
       <img
@@ -39,8 +40,8 @@ function OrgLogo({ domain, alt }) {
         className="w-full h-full object-contain"
         onError={handleError}
       />
-      <div className="w-full h-full bg-[#E6EDF2] text-[#4FA3D9] hidden items-center justify-center rounded-xl">
-        <Globe className="w-8 h-8" />
+      <div className="w-full h-full bg-gradient-to-br from-[#4FA3D9] to-[#2F8F9D] text-white hidden items-center justify-center rounded-xl text-xl font-bold">
+        {initial}
       </div>
     </>
   )
@@ -88,7 +89,7 @@ export default function Volunteering() {
                 {/* Header */}
                 <div className="flex items-center gap-5 mb-6 pb-6 border-b border-[#D6ECFF]">
                   <div className="w-16 h-16 rounded-xl bg-[#F5FAFF] flex items-center justify-center overflow-hidden flex-shrink-0 border border-[#D6ECFF] p-2 shadow-sm">
-                    <OrgLogo domain={item.logoDomain} alt={`${item.organization} logo`} />
+                    <OrgLogo domain={item.logoDomain} alt={`${item.organization} logo`} orgName={item.organization} />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-[#0F3557] mb-1">
@@ -120,7 +121,7 @@ export default function Volunteering() {
                   </div>
 
                   <div className="text-left mt-auto">
-                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-4 pl-2 border-l-2 border-[#00B4D8]">
+                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-4 pb-1 border-b border-[#D6ECFF] inline-block">
                       Tasks &amp; Responsibilities
                     </h4>
                     <ul className="space-y-3">

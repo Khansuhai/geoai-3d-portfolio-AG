@@ -113,7 +113,7 @@ export default function Education() {
                   </div>
 
                   <div className="text-left">
-                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-3 pl-1 border-l-2 border-[#00B4D8]">
+                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-3 pb-1 border-b border-[#D6ECFF] inline-block">
                       Achievements &amp; Roles
                     </h4>
                     <ul className="space-y-2">

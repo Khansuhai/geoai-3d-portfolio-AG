@@ -49,19 +49,21 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-/* Helper: tries Google favicon, then Clearbit, then fallback icon */
-function OrgLogo({ domain, alt }) {
+/* Helper: tries Google favicon, then Clearbit, then shows first-letter initial */
+function OrgLogo({ domain, alt, orgName }) {
   const handleError = (e) => {
     const img = e.target
     // If Google favicon fails, try Clearbit
     if (img.src.includes('google.com')) {
       img.src = `https://logo.clearbit.com/${domain}`
     } else {
-      // Both failed, show fallback
+      // Both failed, show initial letter
       img.style.display = 'none'
       img.nextSibling.style.display = 'flex'
     }
   }
+
+  const initial = orgName ? orgName.charAt(0).toUpperCase() : 'O'
 
   return (
     <>
@@ -71,8 +73,8 @@ function OrgLogo({ domain, alt }) {
         className="w-full h-full object-contain"
         onError={handleError}
       />
-      <div className="w-full h-full bg-[#E6EDF2] text-[#4FA3D9] hidden items-center justify-center rounded-full">
-        <Briefcase className="w-8 h-8" />
+      <div className="w-full h-full bg-gradient-to-br from-[#4FA3D9] to-[#2F8F9D] text-white hidden items-center justify-center rounded-full text-xl font-bold">
+        {initial}
       </div>
     </>
   )
@@ -122,7 +124,7 @@ export default function Timeline() {
                     {item.duration}
                   </span>
                   <div className="w-16 h-16 rounded-full bg-[#F5FAFF] p-1.5 shadow-md border border-[#D6ECFF] group-hover:scale-105 transition-transform duration-500 overflow-hidden flex items-center justify-center">
-                    <OrgLogo domain={item.logoDomain} alt={`${item.organization} logo`} />
+                    <OrgLogo domain={item.logoDomain} alt={`${item.organization} logo`} orgName={item.organization} />
                   </div>
                 </div>
 
@@ -139,7 +141,7 @@ export default function Timeline() {
                   </p>
 
                   <div className="text-left mt-auto">
-                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-3 pl-2 border-l-2 border-[#00B4D8]">
+                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-3 pb-1 border-b border-[#D6ECFF] inline-block">
                       Tasks
                     </h4>
                     <ul className="space-y-2">
