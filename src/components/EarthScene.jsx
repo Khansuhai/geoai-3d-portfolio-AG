@@ -5,7 +5,7 @@ import * as THREE from 'three'
 
 function ParticleField() {
   const ref = useRef()
-  const count = 2000
+  const count = 1500
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3)
@@ -31,24 +31,25 @@ function ParticleField() {
     <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#38bdf8"
-        size={0.08}
+        color="#4FA3D9"
+        size={0.06}
         sizeAttenuation
         depthWrite={false}
-        opacity={0.6}
+        opacity={0.35}
       />
     </Points>
   )
 }
 
+/* Small bright dots orbiting like satellites */
 function SatelliteNodes() {
   const ref = useRef()
-  const count = 50
+  const count = 40
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
-      const r = 8 + Math.random() * 20
+      const r = 6 + Math.random() * 15
       const theta = Math.random() * Math.PI * 2
       const phi = Math.acos(2 * Math.random() - 1)
       pos[i * 3] = r * Math.sin(phi) * Math.cos(theta)
@@ -60,7 +61,8 @@ function SatelliteNodes() {
 
   useFrame((state) => {
     if (ref.current) {
-      ref.current.rotation.y = -state.clock.elapsedTime * 0.015
+      ref.current.rotation.y = -state.clock.elapsedTime * 0.04
+      ref.current.rotation.z = state.clock.elapsedTime * 0.01
     }
   })
 
@@ -68,11 +70,11 @@ function SatelliteNodes() {
     <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#a78bfa"
-        size={0.18}
+        color="#0F3557"
+        size={0.2}
         sizeAttenuation
         depthWrite={false}
-        opacity={0.8}
+        opacity={0.5}
       />
     </Points>
   )
@@ -80,53 +82,54 @@ function SatelliteNodes() {
 
 function GlobeWireframe() {
   const meshRef = useRef()
+  const wireRef = useRef()
 
   useFrame((state) => {
+    const t = state.clock.elapsedTime
     if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.05
+      meshRef.current.rotation.y = t * 0.05
       meshRef.current.rotation.x = 0.3
+    }
+    if (wireRef.current) {
+      wireRef.current.rotation.y = t * 0.05
+      wireRef.current.rotation.x = 0.3
     }
   })
 
   return (
     <group>
-      {/* Core sphere glow */}
+      {/* Core sphere - subtle fill */}
       <Sphere args={[4.8, 32, 32]} ref={meshRef}>
         <meshBasicMaterial
-          color="#38bdf8"
+          color="#D6ECFF"
           transparent
-          opacity={0.03}
+          opacity={0.15}
           side={THREE.BackSide}
         />
       </Sphere>
       {/* Wireframe sphere */}
-      <Sphere args={[5, 48, 48]} ref={(el) => {
-        if (el && meshRef.current) {
-          el.rotation.y = meshRef.current.rotation.y
-          el.rotation.x = meshRef.current.rotation.x
-        }
-      }}>
+      <Sphere args={[5, 48, 48]} ref={wireRef}>
         <meshBasicMaterial
-          color="#38bdf8"
+          color="#4FA3D9"
           wireframe
           transparent
-          opacity={0.08}
+          opacity={0.2}
         />
       </Sphere>
       {/* Orbit ring 1 */}
       <mesh rotation={[Math.PI / 2.5, 0, 0]}>
-        <torusGeometry args={[6.5, 0.01, 8, 100]} />
-        <meshBasicMaterial color="#22d3ee" transparent opacity={0.2} />
+        <torusGeometry args={[6.5, 0.015, 8, 100]} />
+        <meshBasicMaterial color="#00B4D8" transparent opacity={0.35} />
       </mesh>
       {/* Orbit ring 2 */}
       <mesh rotation={[Math.PI / 1.8, 0.5, 0.3]}>
-        <torusGeometry args={[7.2, 0.01, 8, 100]} />
-        <meshBasicMaterial color="#a78bfa" transparent opacity={0.15} />
+        <torusGeometry args={[7.2, 0.015, 8, 100]} />
+        <meshBasicMaterial color="#2F8F9D" transparent opacity={0.25} />
       </mesh>
       {/* Orbit ring 3 */}
       <mesh rotation={[Math.PI / 3, -0.3, 0.6]}>
-        <torusGeometry args={[7.8, 0.008, 8, 100]} />
-        <meshBasicMaterial color="#38bdf8" transparent opacity={0.1} />
+        <torusGeometry args={[7.8, 0.012, 8, 100]} />
+        <meshBasicMaterial color="#4FA3D9" transparent opacity={0.2} />
       </mesh>
     </group>
   )
@@ -140,8 +143,8 @@ export default function EarthScene() {
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
-        <ambientLight intensity={0.1} />
-        <pointLight position={[10, 10, 10]} intensity={0.3} color="#38bdf8" />
+        <ambientLight intensity={0.3} />
+        <pointLight position={[10, 10, 10]} intensity={0.5} color="#4FA3D9" />
         <GlobeWireframe />
         <ParticleField />
         <SatelliteNodes />

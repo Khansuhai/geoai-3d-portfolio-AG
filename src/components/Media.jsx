@@ -71,8 +71,8 @@ export default function Media() {
           </p>
         </motion.div>
 
-        {/* Masonry Grid */}
-        <div className="masonry-grid">
+        {/* Image Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {mediaItems.map((item, index) => (
             <MediaCard key={item.url} item={item} index={index} />
           ))}

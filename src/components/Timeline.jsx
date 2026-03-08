@@ -49,6 +49,35 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 }
 
+/* Helper: tries Google favicon, then Clearbit, then fallback icon */
+function OrgLogo({ domain, alt }) {
+  const handleError = (e) => {
+    const img = e.target
+    // If Google favicon fails, try Clearbit
+    if (img.src.includes('google.com')) {
+      img.src = `https://logo.clearbit.com/${domain}`
+    } else {
+      // Both failed, show fallback
+      img.style.display = 'none'
+      img.nextSibling.style.display = 'flex'
+    }
+  }
+
+  return (
+    <>
+      <img
+        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
+        alt={alt}
+        className="w-full h-full object-contain"
+        onError={handleError}
+      />
+      <div className="w-full h-full bg-[#E6EDF2] text-[#4FA3D9] hidden items-center justify-center rounded-full">
+        <Briefcase className="w-8 h-8" />
+      </div>
+    </>
+  )
+}
+
 export default function Timeline() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
@@ -76,7 +105,7 @@ export default function Timeline() {
         </motion.div>
 
         {/* Work Experience Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto auto-rows-fr">
           {experienceData.map((item, index) => (
             <motion.div
               key={item.role + index}
@@ -88,46 +117,35 @@ export default function Timeline() {
               <div className="bg-white h-full p-8 border border-[#D6ECFF] rounded-2xl shadow-sm hover:shadow-lg hover:border-[#4FA3D9]/40 transition-all flex flex-col group">
                 
                 {/* Logo Area */}
-                <div className="mb-8 h-20 flex items-center justify-center relative">
+                <div className="mb-6 flex items-center justify-center relative">
                   <span className="absolute left-0 top-0 inline-block px-3 py-1 rounded-full bg-[#D6ECFF]/50 text-[10px] font-mono text-[#2F8F9D] border border-[#D6ECFF]">
                     {item.duration}
                   </span>
-                  <div className="w-20 h-20 rounded-full bg-[#F5FAFF] p-1 shadow-md border border-[#D6ECFF] group-hover:scale-105 transition-transform duration-500 overflow-hidden flex items-center justify-center">
-                    <img 
-                      src={`https://logo.clearbit.com/${item.logoDomain}`} 
-                      alt={`${item.organization} logo`}
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className="w-full h-full bg-[#E6EDF2] text-[#4FA3D9] hidden items-center justify-center rounded-full">
-                      <Briefcase className="w-8 h-8" />
-                    </div>
+                  <div className="w-16 h-16 rounded-full bg-[#F5FAFF] p-1.5 shadow-md border border-[#D6ECFF] group-hover:scale-105 transition-transform duration-500 overflow-hidden flex items-center justify-center">
+                    <OrgLogo domain={item.logoDomain} alt={`${item.organization} logo`} />
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="flex-grow flex flex-col text-center">
-                  <h3 className="text-xl font-bold text-[#0F3557] mb-2">
+                  <h3 className="text-lg font-bold text-[#0F3557] mb-2">
                     {item.role}
                   </h3>
                   <p className="text-sm font-medium text-[#64748b] mb-1">
                     {item.organization}
                   </p>
-                  <p className="text-xs text-[#2F8F9D] mb-6 font-mono">
+                  <p className="text-xs text-[#2F8F9D] mb-5 font-mono">
                     {item.location}
                   </p>
 
                   <div className="text-left mt-auto">
-                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-3 pl-1 border-l-2 border-[#00B4D8]">
+                    <h4 className="text-xs font-mono uppercase text-[#2F8F9D] tracking-wider mb-3 pl-2 border-l-2 border-[#00B4D8]">
                       Tasks
                     </h4>
                     <ul className="space-y-2">
                       {item.tasks.map((task, i) => (
                         <li key={i} className="text-xs text-[#334155] flex items-start gap-2">
-                          <span className="text-[#00B4D8] mt-1">•</span>
+                          <span className="text-[#00B4D8] mt-0.5">•</span>
                           <span className="leading-relaxed">{task}</span>
                         </li>
                       ))}

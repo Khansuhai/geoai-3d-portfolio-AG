@@ -2,6 +2,29 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Award, CheckCircle2 } from 'lucide-react'
 
+function OrgLogo({ domain, alt }) {
+  const handleError = (e) => {
+    const img = e.target
+    if (img.src.includes('google.com')) {
+      img.src = `https://logo.clearbit.com/${domain}`
+    } else {
+      img.style.display = 'none'
+      img.nextSibling.style.display = 'block'
+    }
+  }
+  return (
+    <>
+      <img
+        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
+        alt={alt}
+        className="w-8 h-8 object-contain"
+        onError={handleError}
+      />
+      <Award className="w-6 h-6 text-[#4FA3D9] hidden" />
+    </>
+  )
+}
+
 const certificationsData = [
   {
     organization: 'NASA ARSET',
@@ -123,7 +146,7 @@ export default function Awards() {
         </motion.div>
 
         {/* Certifications Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto auto-rows-fr">
           {certificationsData.map((group, index) => (
             <motion.div
               key={group.organization}
@@ -137,16 +160,7 @@ export default function Awards() {
                 {/* Organization Header */}
                 <div className="flex items-center gap-4 mb-5 pb-5 border-b border-[#E6EDF2]">
                  <div className="w-12 h-12 rounded-lg bg-[#F5FAFF] flex items-center justify-center overflow-hidden flex-shrink-0 border border-[#D6ECFF]">
-                    <img 
-                      src={`https://logo.clearbit.com/${group.domain}`} 
-                      alt={`${group.organization} logo`}
-                      className="w-8 h-8 object-contain"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'block';
-                      }}
-                    />
-                    <Award className="w-6 h-6 text-[#4FA3D9] hidden" />
+                    <OrgLogo domain={group.domain} alt={`${group.organization} logo`} />
                   </div>
                   <h3 className="text-lg font-bold text-[#0F3557] leading-tight">
                     {group.organization}

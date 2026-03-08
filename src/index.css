@@ -185,7 +185,12 @@ body {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.6;
+}
+
+/* Fix navbar clipping section headings */
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 /* ===== MASONRY GRID ===== */
