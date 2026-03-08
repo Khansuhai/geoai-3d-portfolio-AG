@@ -56,21 +56,21 @@ export default function Navbar() {
         scrolled ? 'bg-white/90 backdrop-blur-xl shadow-md shadow-[#0F3557]/5 border-b border-[#D6ECFF]' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo — bigger, shifted from extreme left */}
           <a
             href="#home"
             onClick={(e) => handleClick(e, '#home')}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group ml-6"
           >
-            <span className="text-xl font-bold">
+            <span className="text-2xl font-bold tracking-tight">
               <span className="text-[#0F3557]">Suhail</span>
               <span className="text-[#4FA3D9]"> Khan</span>
             </span>
           </a>
 
-          {/* Desktop nav — bigger, more creative buttons */}
+          {/* Desktop nav — significantly bigger */}
           <div className="hidden md:flex items-center gap-1.5">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.replace('#', '')
@@ -79,14 +79,13 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className={`relative px-4 py-2.5 rounded-xl text-[13px] font-semibold tracking-wide transition-all duration-300 group ${
+                  className={`relative px-5 py-3 rounded-xl text-[15px] font-semibold transition-all duration-300 group ${
                     isActive
                       ? 'text-[#0F3557]'
-                      : 'text-[#64748b] hover:text-[#0F3557]'
+                      : 'text-[#64748b] hover:text-[#0F3557] hover:bg-[#E6EDF2]/40'
                   }`}
                 >
                   <span className="relative z-10">{item.label}</span>
-                  {/* Active Indicator */}
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
@@ -103,9 +102,9 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg text-[#64748b] hover:text-[#0F3557] transition-colors"
+            className="md:hidden p-2.5 rounded-xl text-[#64748b] hover:text-[#0F3557] hover:bg-[#E6EDF2]/40 transition-all"
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
@@ -119,13 +118,13 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white/95 backdrop-blur-xl border-t border-[#D6ECFF]"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="px-5 py-4 space-y-1">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                  className={`block px-5 py-3.5 rounded-xl text-base font-semibold transition-all ${
                     activeSection === item.href.replace('#', '')
                       ? 'text-[#0F3557] bg-[#D6ECFF]/40'
                       : 'text-[#64748b] hover:text-[#0F3557] hover:bg-[#E6EDF2]/50'

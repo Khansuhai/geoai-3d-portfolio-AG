@@ -8,15 +8,18 @@ const skills = [
     icon: Monitor,
     color: '#4FA3D9',
     items: [
-      { name: 'QGIS', icon: '🌐' },
-      { name: 'ArcMap', icon: '🗺️' },
-      { name: 'ArcGIS Pro', icon: '🗺️' },
-      { name: 'ESA SNAP', icon: '🛰️' },
-      { name: 'ILWIS', icon: '📊' },
-      { name: 'Google Earth Pro', icon: '🌍' },
-      { name: 'Google Earth Studio', icon: '🎬' },
-      { name: 'J-MARS', icon: '🔴' },
-      { name: 'SEA-DAS', icon: '🌊' },
+      { name: 'QGIS', icon: '/assets/img/icons/qgis.png' },
+      { name: 'ArcMap', icon: '/assets/img/icons/arcmap.png' },
+      { name: 'ArcGIS Pro', icon: '/assets/img/ARC%20GIS%20PRO%20LOGO.jpg' },
+      { name: 'ESA SNAP', icon: '/assets/img/icons/snap.png' },
+      { name: 'ILWIS', icon: '/assets/img/ILWIS%20LOGO.jpg' },
+      { name: 'Google Earth Pro', icon: '/assets/img/GOOGLE%20EARTH%20PRO%20LOGO.jpg' },
+      { name: 'Google Earth Studio', icon: '/assets/img/GOOGLE%20EARTH%20STUDIO%20LOGO.jpg' },
+      { name: 'ERDAS IMAGINE', icon: '/assets/img/icons/imagine.png' },
+      { name: 'ENVI', icon: '/assets/img/ENVI%20LOGO.jpg' },
+      { name: 'J-MARS', icon: '/assets/img/J%20MARS%20%20LOGO.png' },
+      { name: 'SEA-DAS', icon: '/assets/img/SEADAS%20LOGO.jpg' },
+      { name: 'PolSARpro', icon: '/assets/img/icons/polsarpro_ico.gif' },
     ]
   },
   { 
@@ -24,11 +27,11 @@ const skills = [
     icon: Cloud,
     color: '#00B4D8',
     items: [
-      { name: 'Google Earth Engine', icon: '🌍' },
-      { name: 'Sentinel Hub EO', icon: '🛰️' },
-      { name: 'MS Planetary Computer', icon: '💻' },
-      { name: 'EOS Platform', icon: '📡' },
-      { name: 'ArcGIS Online', icon: '☁️' },
+      { name: 'Google Earth Engine', icon: '/assets/img/icons/gee.png' },
+      { name: 'Sentinel Hub EO', icon: '/assets/img/SENTINEL%20HUB%20EOEO%20BROWSER%20LOGO.png' },
+      { name: 'MS Planetary Computer', icon: '/assets/img/icons/mspc.png' },
+      { name: 'ArcGIS Online', icon: '/assets/img/ARC%20GIS%20ONLINE%20LOGO.jpg' },
+      { name: 'MATLAB', icon: '/assets/img/icons/matlab.png' },
     ]
   },
   { 
@@ -36,11 +39,12 @@ const skills = [
     icon: Code2,
     color: '#2F8F9D',
     items: [
-      { name: 'Python', icon: '🐍' },
-      { name: 'HTML', icon: '📄' },
-      { name: 'CSS', icon: '🎨' },
-      { name: 'JavaScript', icon: '⚡' },
-      { name: 'Git', icon: '📦' },
+      { name: 'Python', icon: '/assets/img/icons/python.png' },
+      { name: 'JavaScript', icon: '/assets/img/icons/js.png' },
+      { name: 'HTML', icon: '/assets/img/HTML%20LOGO.png' },
+      { name: 'CSS', icon: '/assets/img/CSS%20LOGO.jpg' },
+      { name: 'R Language', icon: '/assets/img/R%20LANGUGE%20LOGO.png' },
+      { name: 'Git', icon: '/assets/img/icons/git1.png' },
     ]
   },
   { 
@@ -48,10 +52,10 @@ const skills = [
     icon: Languages,
     color: '#0F3557',
     items: [
-      { name: 'English (C2)', icon: '🇬🇧' },
-      { name: 'Hindi (Native)', icon: '🇮🇳' },
-      { name: 'Urdu (Native)', icon: '🇵🇰' },
-      { name: 'French (A1)', icon: '🇫🇷' },
+      { name: 'English (C2)', flag: '🇬🇧' },
+      { name: 'Hindi (Native)', flag: '🇮🇳' },
+      { name: 'Urdu (Native)', flag: '🇵🇰' },
+      { name: 'French (A1)', flag: '🇫🇷' },
     ]
   },
 ]
@@ -98,7 +102,7 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* ====== CENTERED PROFILE + INFO CARD ====== */}
+        {/* ====== CENTERED PROFILE CARD ====== */}
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -106,46 +110,40 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-14"
         >
-          <div className="bg-white rounded-2xl border border-[#D6ECFF] shadow-sm p-8 max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              {/* Profile Image — centered */}
-              <div className="relative flex-shrink-0">
-                <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg border-2 border-[#D6ECFF] group">
+          <div className="bg-white rounded-2xl border border-[#D6ECFF] shadow-sm p-10 max-w-3xl mx-auto">
+            <div className="flex flex-col items-center text-center">
+              {/* Profile Image — truly centered */}
+              <div className="relative mb-6">
+                <div className="w-40 h-40 rounded-full overflow-hidden shadow-lg border-4 border-[#D6ECFF] group">
                   <img
                     src="/assets/img/profile.png"
                     alt="Suhail Khan — Cloud Geographer"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1.5 rounded-full border border-[#D6ECFF] shadow-sm flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#2F8F9D]" />
-                  <span className="text-xs text-[#334155] font-medium whitespace-nowrap">Saharanpur, India</span>
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full border border-[#D6ECFF] shadow-sm flex items-center gap-1.5">
+                  <MapPin className="w-3 h-3 text-[#2F8F9D]" />
+                  <span className="text-[11px] text-[#334155] font-medium whitespace-nowrap">Saharanpur, India</span>
                 </div>
               </div>
 
-              {/* Profile Info */}
-              <div className="flex-grow text-center md:text-left">
-                <h3 className="text-2xl font-bold text-[#0F3557] mb-1">Suhail Khan</h3>
-                <p className="text-base text-[#2F8F9D] font-mono mb-5">Cloud Geographer &amp; Data Analyst</p>
-                <div className="space-y-3 text-sm text-[#334155]">
-                  <div className="flex items-center gap-3 justify-center md:justify-start">
-                    <div className="w-8 h-8 rounded-lg bg-[#D6ECFF]/50 flex items-center justify-center flex-shrink-0">
-                      <GraduationCap className="w-4 h-4 text-[#4FA3D9]" />
-                    </div>
-                    <span>B.Sc Geo-Informatics, Amity Univ · CGPA 9.26</span>
-                  </div>
-                  <div className="flex items-center gap-3 justify-center md:justify-start">
-                    <div className="w-8 h-8 rounded-lg bg-[#D6ECFF]/50 flex items-center justify-center flex-shrink-0">
-                      <Compass className="w-4 h-4 text-[#00B4D8]" />
-                    </div>
-                    <span>PG Dip. Disaster Management, Univ of Ladakh</span>
-                  </div>
-                  <div className="flex items-center gap-3 justify-center md:justify-start">
-                    <div className="w-8 h-8 rounded-lg bg-[#D6ECFF]/50 flex items-center justify-center flex-shrink-0">
-                      <Globe className="w-4 h-4 text-[#2F8F9D]" />
-                    </div>
-                    <span>Born: 15 Feb 2003 · Nationality: Indian</span>
-                  </div>
+              {/* Name & Title */}
+              <h3 className="text-2xl font-bold text-[#0F3557] mb-1">Suhail Khan</h3>
+              <p className="text-base text-[#2F8F9D] font-mono mb-6">Cloud Geographer &amp; Data Analyst</p>
+
+              {/* Info Chips */}
+              <div className="flex flex-wrap justify-center gap-3">
+                <div className="flex items-center gap-2 bg-[#F5FAFF] px-4 py-2.5 rounded-xl border border-[#E6EDF2]">
+                  <GraduationCap className="w-4 h-4 text-[#4FA3D9]" />
+                  <span className="text-sm text-[#334155]">B.Sc Geo-Informatics · CGPA 9.26</span>
+                </div>
+                <div className="flex items-center gap-2 bg-[#F5FAFF] px-4 py-2.5 rounded-xl border border-[#E6EDF2]">
+                  <Compass className="w-4 h-4 text-[#00B4D8]" />
+                  <span className="text-sm text-[#334155]">PG Dip. Disaster Management</span>
+                </div>
+                <div className="flex items-center gap-2 bg-[#F5FAFF] px-4 py-2.5 rounded-xl border border-[#E6EDF2]">
+                  <Globe className="w-4 h-4 text-[#2F8F9D]" />
+                  <span className="text-sm text-[#334155]">Born: 15 Feb 2003 · Indian</span>
                 </div>
               </div>
             </div>
@@ -159,7 +157,6 @@ export default function About() {
               icon: Snowflake,
               color: 'text-[#4FA3D9]',
               bg: 'bg-[#D6ECFF]/40',
-              borderColor: 'border-[#4FA3D9]/20',
               title: 'Cryosphere & GLOF Research',
               desc: 'Focused on high-altitude Glacial Lake Outburst Flood (GLOF) modeling in Ladakh, combining satellite remote sensing with hydrological analysis to assess glacial hazards in the Himalayas.',
               delay: 0.3,
@@ -168,7 +165,6 @@ export default function About() {
               icon: Globe,
               color: 'text-[#00B4D8]',
               bg: 'bg-[#D6ECFF]/40',
-              borderColor: 'border-[#00B4D8]/20',
               title: 'Earth System Science',
               desc: 'In-depth study of cryosphere dynamics, physical oceanography, atmospheric science, climate change, and geomorphology — bridging physical geography with cutting-edge geospatial technology.',
               delay: 0.4,
@@ -177,12 +173,11 @@ export default function About() {
               icon: FlaskConical,
               color: 'text-[#2F8F9D]',
               bg: 'bg-[#D6ECFF]/40',
-              borderColor: 'border-[#2F8F9D]/20',
               title: 'Disaster Management & Community',
               desc: 'PG Diploma in Disaster Management with a focus on natural hazard assessment. Volunteer at Jax Foundation, working on girls\' child education and environmental issues.',
               delay: 0.5,
             },
-          ].map(({ icon: Icon, color, bg, borderColor, title, desc, delay }) => (
+          ].map(({ icon: Icon, color, bg, title, desc, delay }) => (
             <motion.div
               key={title}
               initial="hidden"
@@ -191,7 +186,7 @@ export default function About() {
               transition={{ duration: 0.6, delay }}
               className="flex"
             >
-              <div className={`bg-white p-7 rounded-2xl border border-[#D6ECFF] ${borderColor} shadow-sm hover:shadow-md transition-all flex flex-col text-center h-full`}>
+              <div className="bg-white p-7 rounded-2xl border border-[#D6ECFF] shadow-sm hover:shadow-md transition-all flex flex-col text-center h-full">
                 <div className={`${bg} p-4 rounded-xl w-fit mx-auto mb-5`}>
                   <Icon className={`w-7 h-7 ${color}`} />
                 </div>
@@ -208,9 +203,9 @@ export default function About() {
           animate={isInView ? 'visible' : 'hidden'}
           variants={fadeInUp}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mb-20"
+          className="mb-24"
         >
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <span className="inline-block text-xs font-mono text-[#2F8F9D] tracking-[0.3em] uppercase mb-3">
               Tools &amp; Technologies
             </span>
@@ -219,7 +214,7 @@ export default function About() {
             </h3>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {skills.map((skillGroup, i) => {
               const Icon = skillGroup.icon
               return (
@@ -230,16 +225,16 @@ export default function About() {
                   variants={fadeInUp}
                   transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
                 >
-                  <div className="bg-white p-7 rounded-2xl border border-[#D6ECFF] shadow-sm hover:shadow-lg hover:border-[#4FA3D9]/30 transition-all h-full group">
+                  <div className="bg-white p-8 rounded-2xl border border-[#D6ECFF] shadow-sm hover:shadow-lg hover:border-[#4FA3D9]/30 transition-all h-full group">
                     {/* Category Header */}
-                    <div className="flex items-center gap-3 mb-5 pb-4 border-b border-[#E6EDF2]">
+                    <div className="flex items-center gap-3 mb-6 pb-5 border-b border-[#E6EDF2]">
                       <div 
-                        className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                        className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                         style={{ backgroundColor: `${skillGroup.color}15` }}
                       >
                         <Icon className="w-5 h-5" style={{ color: skillGroup.color }} />
                       </div>
-                      <h4 className="text-base font-semibold text-[#0F3557]">
+                      <h4 className="text-lg font-semibold text-[#0F3557]">
                         {skillGroup.category}
                       </h4>
                       <span className="ml-auto text-xs font-mono text-[#94a3b8] bg-[#F5FAFF] px-2.5 py-1 rounded-lg border border-[#E6EDF2]">
@@ -247,14 +242,18 @@ export default function About() {
                       </span>
                     </div>
 
-                    {/* Skill Tags with Icons */}
-                    <div className="flex flex-wrap gap-2.5">
+                    {/* Skill Tags with real logos — BIGGER */}
+                    <div className="flex flex-wrap gap-3">
                       {skillGroup.items.map((skill) => (
                         <span
                           key={skill.name}
-                          className="inline-flex items-center gap-1.5 text-[13px] px-3.5 py-2 rounded-lg bg-[#F5FAFF] text-[#334155] border border-[#E6EDF2] hover:border-[#4FA3D9]/50 hover:text-[#0F3557] hover:bg-[#D6ECFF]/30 hover:shadow-sm transition-all duration-300 cursor-default font-medium"
+                          className="inline-flex items-center gap-2.5 text-sm px-4 py-3 rounded-xl bg-[#F5FAFF] text-[#334155] border border-[#E6EDF2] hover:border-[#4FA3D9]/50 hover:text-[#0F3557] hover:bg-[#D6ECFF]/30 hover:shadow-sm transition-all duration-300 cursor-default font-medium"
                         >
-                          <span className="text-sm">{skill.icon}</span>
+                          {skill.icon ? (
+                            <img src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain rounded-sm" />
+                          ) : (
+                            <span className="text-lg">{skill.flag}</span>
+                          )}
                           {skill.name}
                         </span>
                       ))}
