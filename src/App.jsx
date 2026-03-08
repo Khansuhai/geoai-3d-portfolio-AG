@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Education from './components/Education'
 import Timeline from './components/Timeline'
 import Media from './components/Media'
 import Awards from './components/Awards'
@@ -34,6 +35,7 @@ export default function App() {
       <main className="relative z-10">
         <Hero />
         <About />
+        <Education />
         <Timeline />
         <Media />
         <Awards />

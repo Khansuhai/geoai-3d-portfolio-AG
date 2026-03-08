@@ -3,11 +3,14 @@ import { useRef } from 'react'
 import { GraduationCap, Globe, FlaskConical, MapPin, Compass, Snowflake } from 'lucide-react'
 
 const skills = [
-  { category: 'Programming', items: ['Python', 'MATLAB', 'R', 'JavaScript', 'Google Earth Engine'] },
-  { category: 'GIS & RS Software', items: ['QGIS', 'ArcGIS', 'ERDAS IMAGINE', 'ENVI', 'ESA-SNAP', 'PolSARpro'] },
-  { category: 'Cloud Platforms', items: ['Google Earth Engine', 'HEC-RAS'] },
-  { category: 'Research Areas', items: ['Cryosphere', 'GLOF Modeling', 'Remote Sensing', 'Climate Science', 'Disaster Management'] },
+  { category: 'GIS & RS Software', items: ['QGIS', 'ArcMap', 'ArcGIS Pro', 'ESA SNAP', 'ILWIS', 'Google Earth Pro', 'Google Earth Studio', 'J-MARS', 'SEA-DAS'] },
+  { category: 'Cloud Platforms', items: ['Google Earth Engine', 'Sentinel Hub EO', 'MS Planetary Computer', 'EOS Platform', 'ArcGIS Online'] },
+  { category: 'Programming & Tools', items: ['Python', 'HTML', 'CSS', 'JavaScript', 'Git'] },
+  { category: 'Languages', items: ['English (C2)', 'Hindi (Native)', 'Urdu (Native)', 'French (A1)'] },
 ]
+
+const researchInterests = ['Glaciology', 'Cryosphere Science', 'Glacial Lake Outburst Floods (GLOF)', 'Remote Sensing', 'Earth Observation', 'Climate Change', 'Himalayan Hazards', 'Disaster Risk Reduction']
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -32,10 +35,10 @@ export default function About() {
           <span className="inline-block text-xs font-mono text-glacier tracking-[0.3em] uppercase mb-3">
             // About Me
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold gradient-text mb-4">
+          <h2 className="text-5xl sm:text-6xl font-bold gradient-text mb-6">
             The Journey
           </h2>
-          <p className="text-text-muted max-w-2xl mx-auto">
+          <p className="text-text-secondary text-lg sm:text-xl max-w-3xl mx-auto">
             From geography classrooms to high-altitude glaciers — tracing the path of a Cloud Geographer
           </p>
         </motion.div>
@@ -51,13 +54,13 @@ export default function About() {
             className="lg:col-span-2"
           >
             <div className="glass-card p-6 h-full">
-              <div className="relative mb-6 rounded-xl overflow-hidden group">
+              <div className="relative mb-6 rounded-xl overflow-hidden group shadow-lg shadow-cyan-neon/10">
                 <img
                   src="/assets/img/profile.png"
                   alt="Suhail Khan — Cloud Geographer"
-                  className="w-full aspect-[4/5] object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
+                  className="w-full aspect-[4/5] object-cover rounded-xl transition-transform duration-700 group-hover:scale-105 filter contrast-[1.1] saturate-[1.1]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-space-900 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-space-900 via-space-900/40 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="glass px-3 py-2 rounded-lg inline-flex items-center gap-2">
                     <MapPin className="w-3.5 h-3.5 text-glacier" />
@@ -66,19 +69,19 @@ export default function About() {
                 </div>
               </div>
               <h3 className="text-xl font-bold text-text-primary mb-1">Suhail Khan</h3>
-              <p className="text-sm text-glacier font-mono mb-4">B.Sc. (Hons.) Geography</p>
+              <p className="text-sm text-glacier font-mono mb-4">Cloud Geographer &amp; Data Analyst</p>
               <div className="space-y-2.5 text-sm text-text-secondary">
                 <div className="flex items-center gap-2">
                   <GraduationCap className="w-4 h-4 text-laser flex-shrink-0" />
-                  <span>Amity University, Noida · CGPA 9.22/10</span>
+                  <span>B.Sc Geo-Informatics, Amity Univ · CGPA 9.26</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Compass className="w-4 h-4 text-cyan-neon flex-shrink-0" />
-                  <span>PG Diploma in Disaster Management</span>
+                  <span>PG Dip. Disaster Management, Univ of Ladakh</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Globe className="w-4 h-4 text-aurora flex-shrink-0" />
-                  <span>M.Sc. Earth Observation &amp; GeoAI (pursuing)</span>
+                  <span>Born: 15 Feb 2003 · Nationality: Indian</span>
                 </div>
               </div>
             </div>
@@ -138,9 +141,10 @@ export default function About() {
           animate={isInView ? 'visible' : 'hidden'}
           variants={fadeInUp}
           transition={{ duration: 0.6, delay: 0.6 }}
+          className="mb-16"
         >
-          <h3 className="text-xl font-bold text-text-primary mb-6 text-center">
-            <span className="gradient-text-warm">Technical Arsenal</span>
+          <h3 className="text-2xl font-bold text-text-primary mb-8 text-center">
+            <span className="gradient-text">Technical Arsenal</span>
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {skills.map((skillGroup, i) => (
@@ -152,13 +156,35 @@ export default function About() {
                   {skillGroup.items.map((skill) => (
                     <span
                       key={skill}
-                      className="text-xs px-2.5 py-1.5 rounded-md bg-space-600/50 text-text-secondary border border-space-500/30 hover:border-glacier/30 hover:text-glacier transition-all duration-300"
+                      className="text-xs px-3 py-2 rounded-md bg-space-600/50 text-text-secondary border border-space-500/30 hover:border-glacier/30 hover:text-glacier hover:bg-space-600/80 transition-all duration-300 shadow-sm"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
               </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Research Interests */}
+        <motion.div
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          variants={fadeInUp}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <h3 className="text-xl font-bold text-text-primary mb-6 text-center">
+            <span className="gradient-text">Research Interests</span>
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+            {researchInterests.map((interest) => (
+              <span
+                key={interest}
+                className="text-sm px-4 py-2 rounded-full glass border border-cyan-neon/20 text-text-primary hover:border-cyan-neon/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-all duration-300 cursor-default"
+              >
+                {interest}
+              </span>
             ))}
           </div>
         </motion.div>

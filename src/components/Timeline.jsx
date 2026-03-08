@@ -1,79 +1,129 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Briefcase, GraduationCap, Award, FlaskConical } from 'lucide-react'
+import { Briefcase, GraduationCap, Award, FlaskConical, Globe, Activity } from 'lucide-react'
 
 const timelineData = [
   {
-    year: '2025',
-    title: 'NIH Advanced Trainings',
-    organization: 'National Institute of Hydrology, India',
-    description: 'Completed specialized training programs in HEC-RAS flood modeling, Google Earth Engine for cryosphere analysis, and advanced cryosphere hazard assessment techniques.',
+    year: '2025 (Feb)',
+    title: 'Training of Trainers (TOT) — Glaciers',
+    organization: 'National Institute of Hydrology, Roorkee',
+    description: 'Training on Glaciers & Glacial Lakes Observations for Sustainable Water Resources. Skills acquired in HEC-RAS flood modeling, satellite data analysis, and Google Earth Engine.',
     icon: FlaskConical,
     color: 'text-cyan-neon',
     bgColor: 'bg-cyan-neon/10',
     borderColor: 'border-cyan-neon/20',
-    tags: ['HEC-RAS', 'Google Earth Engine', 'Cryosphere Hazards'],
+    tags: ['HEC-RAS', 'Google Earth Engine', 'Water Indices'],
     side: 'right',
   },
   {
-    year: '2024 – Present',
-    title: 'Research Collaborator — Glacierwatch',
-    organization: 'Glacierwatch, Germany',
-    description: 'Contributing to glacier monitoring and research initiatives, leveraging satellite remote sensing data and GIS to track glacial changes across high-altitude regions. Collaborating with international researchers on cryosphere hazard assessment.',
+    year: '2025 (Feb)',
+    title: 'Cryosphere & Climate Hazard Training',
+    organization: 'National Institute of Hydrology, Jammu',
+    description: 'Focused on GLOF modeling, glacier mass balance, and overall climate hazard assessment.',
+    icon: FlaskConical,
+    color: 'text-laser',
+    bgColor: 'bg-laser/10',
+    borderColor: 'border-laser/20',
+    tags: ['GLOF Modeling', 'Mass Balance', 'Climate Hazards'],
+    side: 'left',
+  },
+  {
+    year: '2024 (Aug) – 2025 (Jun)',
+    title: 'PG Diploma in Disaster Management (PGDDM)',
+    organization: 'University of Ladakh — Kargil Campus',
+    description: 'Focus: Disaster risk assessment, hazard mapping, and remote sensing. Thesis: Glacial Lake Outburst Flood Modeling in Ladakh. CGPA: 8.75/10.',
+    icon: GraduationCap,
+    color: 'text-cyan-neon',
+    bgColor: 'bg-cyan-neon/10',
+    borderColor: 'border-cyan-neon/20',
+    tags: ['CGPA 8.75', 'GLOF Thesis', 'Hazard Assessment'],
+    side: 'right',
+  },
+  {
+    year: '2024 (Apr) – Present',
+    title: 'Data Analyst — GlacierWatch Project',
+    organization: 'GlacierWatch, Berlin, Germany',
+    description: 'Glacier data collection and organization. Remote sensing analysis of glacier changes and GIS-based monitoring to support cryosphere research.',
     icon: Briefcase,
     color: 'text-glacier',
     bgColor: 'bg-glacier/10',
     borderColor: 'border-glacier/20',
-    tags: ['Glacier Monitoring', 'Remote Sensing', 'International Collaboration'],
+    tags: ['Data Analysis', 'Remote Sensing', 'GIS Monitoring'],
     side: 'left',
   },
   {
-    year: '2024',
-    title: 'ARCUS — Arctic Research',
-    organization: 'Arctic Research Consortium of the U.S., Alaska',
-    description: 'Engaged with ARCUS in Arctic research and polar science outreach, contributing to a global understanding of polar cryosphere dynamics and their interconnection with climate change.',
-    icon: Award,
-    color: 'text-laser',
-    bgColor: 'bg-laser/10',
-    borderColor: 'border-laser/20',
-    tags: ['Arctic Research', 'Polar Science', 'Climate Change'],
+    year: '2023 (Nov) – Present',
+    title: 'Intern / Research Contributor',
+    organization: 'ARCUS, Alaska, USA',
+    description: 'Contributing to Arctic science education programs, citizen science initiatives, and outreach for Arctic ecosystem awareness.',
+    icon: Briefcase,
+    color: 'text-cyan-neon',
+    bgColor: 'bg-cyan-neon/10',
+    borderColor: 'border-cyan-neon/20',
+    tags: ['Arctic Science', 'Citizen Science', 'Education Outreach'],
     side: 'right',
   },
   {
-    year: '2023 – Present',
-    title: 'Master\'s in Earth Observation & GeoAI',
-    organization: 'Pursuing — EO & GeoAI Specialization',
-    description: 'Advanced studies in Earth Observation techniques combined with Geospatial Artificial Intelligence. Research focus on GLOF (Glacial Lake Outburst Flood) modeling in the Ladakh region using multi-sensor satellite data.',
-    icon: GraduationCap,
-    color: 'text-aurora',
-    bgColor: 'bg-aurora/10',
-    borderColor: 'border-aurora/20',
-    tags: ['GLOF Modeling', 'Ladakh', 'Multi-Sensor Analysis'],
-    side: 'left',
-  },
-  {
-    year: '2023',
-    title: 'PG Diploma in Disaster Management',
-    organization: 'Specialization in Natural Hazards',
-    description: 'Post-Graduate diploma covering disaster risk reduction, hazard assessment, early warning systems, and emergency response — with specific focus on glacial and hydrological hazards.',
-    icon: Award,
-    color: 'text-warm-accent',
-    bgColor: 'bg-warm-accent/10',
-    borderColor: 'border-warm-accent/20',
-    tags: ['Disaster Risk Reduction', 'Hazard Assessment', 'Early Warning'],
-    side: 'right',
-  },
-  {
-    year: '2020 – 2023',
-    title: 'B.Sc. (Hons.) Geography',
-    organization: 'AIGIRS, Amity University, Noida — CGPA 9.22/10',
-    description: 'Honors degree in Geography with focus on Earth System Science, Remote Sensing & GIS. Thesis on Urban Heat Island effect in Saharanpur. Advisor: Dr. V.N. Mishra.',
-    icon: GraduationCap,
+    year: '2023 (May – Jul)',
+    title: 'Teaching Assistant',
+    organization: 'Bright Future Girls Degree College, Saharanpur',
+    description: 'Assisted in GIS & Remote Sensing practical classes. Conducted classes on geohazards, cryosphere, and climate change. Participated in field surveys.',
+    icon: Briefcase,
     color: 'text-glacier',
     bgColor: 'bg-glacier/10',
     borderColor: 'border-glacier/20',
-    tags: ['UHI Thesis', 'CGPA 9.22', 'Merit Scholar'],
+    tags: ['GIS Practicals', 'Geohazards', 'Field Surveys'],
     side: 'left',
+  },
+  {
+    year: '2022 (May – Jul)',
+    title: 'Research Intern — Glacial Lakes',
+    organization: 'Amity Institute of Geo-Informatics & RS, Noida',
+    description: 'Project: Temporal Change in Sheshnag Lake and Sonasar Lake. Performed glacial lake monitoring and temporal change detection using ArcMap, Google Earth Pro, and GEE.',
+    icon: FlaskConical,
+    color: 'text-cyan-neon',
+    bgColor: 'bg-cyan-neon/10',
+    borderColor: 'border-cyan-neon/20',
+    tags: ['Glacial Lakes', 'Change Detection', 'Google Earth Engine'],
+    side: 'right',
+  },
+  {
+    year: '2021 (Apr – Jun)',
+    title: 'Research Intern — Climate Science',
+    organization: 'Amity Institute of Geo-Informatics & RS, Noida',
+    description: 'Project: The Sun Luminosity and its Impact on Earth’s Climate. Focus on research methodology training, climate data analysis, and term paper writing.',
+    icon: FlaskConical,
+    color: 'text-glacier',
+    bgColor: 'bg-glacier/10',
+    borderColor: 'border-glacier/20',
+    tags: ['Climate Impact', 'Data Analysis', 'Term Paper'],
+    side: 'left',
+  },
+  {
+    type: 'volunteer',
+    period: 'Oct 2020 – Dec 2022',
+    title: 'Active Volunteer',
+    subtitle: 'JAX Foundation (NGO), India',
+    description: 'Dedicated over two years to organizing community awareness programs, focusing on environmental conservation and educational empowerment initiatives.',
+    details: ['Event Organization', 'Community Outreach', 'Leadership'],
+    icon: Globe,
+    color: 'text-glacier',
+    bgColor: 'bg-glacier/10',
+    borderColor: 'border-glacier/20',
+    tags: ['Education Camps', 'COVID Relief', 'Tree Plantation'],
+    side: 'right',
+  },
+  {
+    year: '2021 (Feb – Jul)',
+    title: 'Volunteer',
+    organization: 'JAX Foundation',
+    description: 'Activities included girl child education camps, tree plantation drives, and COVID relief coordination (arranging oxygen cylinders and hospital beds).',
+    icon: Award,
+    color: 'text-glacier',
+    bgColor: 'bg-glacier/10',
+    borderColor: 'border-glacier/20',
+    tags: ['Education Camps', 'COVID Relief', 'Tree Plantation'],
+    side: 'right',
   },
 ]
 
@@ -111,7 +161,7 @@ function TimelineItem({ item, index }) {
               <Icon className={`w-4 h-4 ${item.color}`} />
             </div>
             <span className={`text-xs font-mono ${item.color} tracking-wider`}>
-              {item.year}
+              {item.year || item.period}
             </span>
           </div>
 
@@ -119,7 +169,7 @@ function TimelineItem({ item, index }) {
             {item.title}
           </h3>
           <p className="text-sm text-text-muted font-medium mb-3">
-            {item.organization}
+            {item.organization || item.subtitle}
           </p>
           <p className="text-sm text-text-secondary leading-relaxed mb-4">
             {item.description}
@@ -153,18 +203,21 @@ export default function Timeline() {
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          variants={fadeInUp}
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs font-mono text-laser tracking-[0.3em] uppercase mb-3">
-            // Experience &amp; Training
+          <span className="inline-block text-xs font-mono text-cyan-neon tracking-[0.3em] uppercase mb-4">
+            // Experience &amp; Volunteering
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold gradient-text-warm mb-4">
-            The Path Forward
+          <h2 className="text-5xl sm:text-6xl font-bold mb-6">
+            <span className="gradient-text">Timeline</span>
           </h2>
-          <p className="text-text-muted max-w-2xl mx-auto">
-            From academic foundations to international research collaborations — each step has been precision-guided
+          <p className="text-text-secondary text-lg sm:text-xl max-w-3xl mx-auto">
+            My academic progression and professional journey in the geospatial field.
           </p>
         </motion.div>
 

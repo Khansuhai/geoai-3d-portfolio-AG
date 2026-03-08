@@ -55,11 +55,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.6 }}
-          className="mb-6"
+          className="mb-8 mt-2"
         >
-          <h2 className="text-lg sm:text-xl md:text-2xl font-light text-text-secondary">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-text-secondary tracking-wide">
             <span className="text-glacier font-semibold">Cloud Geographer</span>
-            <span className="mx-3 text-text-muted">•</span>
+            <span className="mx-4 text-text-muted/50">•</span>
             <span className="text-text-primary">Geospatial Data Analyst</span>
           </h2>
         </motion.div>
@@ -69,7 +69,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.6 }}
-          className="text-text-muted text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-10"
+          className="text-text-muted text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed mb-12 font-medium"
         >
           B.Sc. Hons in Geography · Pursuing Master's in Earth Observation &amp; GeoAI
           <br className="hidden sm:block" />

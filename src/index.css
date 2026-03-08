@@ -2,21 +2,29 @@
 
 /* ===== DESIGN TOKENS ===== */
 @theme {
-  --color-space-900: #0a0e17;
-  --color-space-800: #0f1525;
-  --color-space-700: #111827;
-  --color-space-600: #1e293b;
-  --color-space-500: #334155;
-  --color-glacier: #38bdf8;
-  --color-glacier-dark: #0ea5e9;
-  --color-cyan-neon: #22d3ee;
-  --color-laser: #a78bfa;
-  --color-laser-bright: #c4b5fd;
-  --color-aurora: #34d399;
-  --color-warm-accent: #f472b6;
-  --color-text-primary: #e2e8f0;
-  --color-text-secondary: #94a3b8;
-  --color-text-muted: #64748b;
+  --color-space-900: #020617; /* Slate 950 - deeper black/blue */
+  --color-space-800: #0f172a; /* Slate 900 */
+  --color-space-700: #1e293b; /* Slate 800 */
+  --color-space-600: #334155; /* Slate 700 */
+  --color-space-500: #475569; /* Slate 600 */
+  
+  --color-glacier: #38bdf8; /* Sky 400 - Main Glacier */
+  --color-glacier-dark: #0284c7; /* Sky 600 */
+  --color-glacier-light: #7dd3fc; /* Sky 300 */
+  
+  --color-cyan-neon: #22d3ee; /* Cyan 400 */
+  --color-cyan-deep: #0891b2; /* Cyan 600 */
+  
+  /* Retaining these names for compatibility but redefining them to fit the blue/glacier theme */
+  --color-laser: #3b82f6; /* Blue 500 */
+  --color-laser-bright: #60a5fa; /* Blue 400 */
+  --color-aurora: #0ea5e9; /* Sky 500 */
+  --color-warm-accent: #0284c7; /* Sky 600 */
+
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }

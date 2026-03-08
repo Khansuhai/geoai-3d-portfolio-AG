@@ -1,13 +1,14 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Facebook, Instagram, ExternalLink } from 'lucide-react'
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Facebook, Instagram, ExternalLink, Globe } from 'lucide-react'
 
 const socialLinks = [
+  { icon: Globe, href: 'https://khansuhai.github.io', label: 'Website', color: 'hover:text-glacier' },
   { icon: Github, href: 'https://github.com/Khansuhai', label: 'GitHub', color: 'hover:text-text-primary' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/suhailkhan143/', label: 'LinkedIn', color: 'hover:text-[#0077b5]' },
-  { icon: Instagram, href: 'https://www.instagram.com/suhail.tiff/', label: 'Instagram', color: 'hover:text-warm-accent' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/suhailkhan143/', label: 'LinkedIn', color: 'hover:text-cyan-neon' },
+  { icon: Instagram, href: 'https://www.instagram.com/suhail.tiff/', label: 'Instagram', color: 'hover:text-glacier-dark' },
   { icon: Twitter, href: 'https://twitter.com/suhailk49329508', label: 'Twitter / X', color: 'hover:text-glacier' },
-  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=100010547910065', label: 'Facebook', color: 'hover:text-[#1877f2]' },
+  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=100010547910065', label: 'Facebook', color: 'hover:text-glacier-dark' },
 ]
 
 const fadeInUp = {
@@ -56,7 +57,7 @@ export default function Contact() {
               {
                 icon: Phone,
                 label: 'Phone',
-                value: '+91 9084407350',
+                value: '+91 9084407350, +91 9906378305',
                 href: 'tel:+919084407350',
                 color: 'text-cyan-neon',
                 bgColor: 'bg-cyan-neon/10',
@@ -64,10 +65,10 @@ export default function Contact() {
               {
                 icon: MapPin,
                 label: 'Location',
-                value: 'Saharanpur, UP, India',
+                value: 'Market Street, H-205 Village Harpal, Saharanpur – 247001, India',
                 href: null,
-                color: 'text-laser',
-                bgColor: 'bg-laser/10',
+                color: 'text-glacier',
+                bgColor: 'bg-glacier/10',
               },
             ].map((item, index) => (
               <motion.div
@@ -143,7 +144,7 @@ export default function Contact() {
           <p className="text-xs text-text-muted">
             <span className="font-mono">©</span> {new Date().getFullYear()} Suhail Khan
             <span className="mx-2 text-space-500">•</span>
-            <span className="gradient-text-warm font-medium">Cloud Geographer &amp; GeoAI Specialist</span>
+            <span className="gradient-text font-medium">Cloud Geographer &amp; GeoAI Specialist</span>
           </p>
           <p className="text-[10px] text-text-muted/50 mt-2 font-mono">
             Built with React · Three.js · Framer Motion

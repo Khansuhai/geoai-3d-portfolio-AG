@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react'
 const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Education', href: '#education' },
   { label: 'Experience', href: '#experience' },
   { label: 'Media', href: '#media' },
   { label: 'Awards', href: '#awards' },
@@ -73,27 +74,35 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleClick(e, item.href)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
-                  activeSection === item.href.replace('#', '')
-                    ? 'text-glacier'
-                    : 'text-text-secondary hover:text-text-primary'
-                }`}
-              >
-                {item.label}
-                {activeSection === item.href.replace('#', '') && (
-                  <motion.div
-                    layoutId="activeSection"
-                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-glacier rounded-full"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.replace('#', '')
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleClick(e, item.href)}
+                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 group ${
+                    isActive
+                      ? 'text-cyan-neon'
+                      : 'text-text-secondary hover:text-text-primary'
+                  }`}
+                >
+                  {item.label}
+                  {/* Active Indicator */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-glacier/10 rounded-full border border-glacier/20"
+                      initial={false}
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  
+                  {/* Hover Indicator */}
+                  <div className="absolute inset-0 bg-space-600/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+              )
+            })}
           </div>
 
           {/* Mobile menu button */}
