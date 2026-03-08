@@ -7,37 +7,64 @@ const skills = [
     category: 'GIS & Remote Sensing', 
     icon: Monitor,
     color: '#4FA3D9',
-    items: ['QGIS', 'ArcMap', 'ArcGIS Pro', 'ESA SNAP', 'ILWIS', 'Google Earth Pro', 'Google Earth Studio', 'J-MARS', 'SEA-DAS'] 
+    items: [
+      { name: 'QGIS', icon: '🌐' },
+      { name: 'ArcMap', icon: '🗺️' },
+      { name: 'ArcGIS Pro', icon: '🗺️' },
+      { name: 'ESA SNAP', icon: '🛰️' },
+      { name: 'ILWIS', icon: '📊' },
+      { name: 'Google Earth Pro', icon: '🌍' },
+      { name: 'Google Earth Studio', icon: '🎬' },
+      { name: 'J-MARS', icon: '🔴' },
+      { name: 'SEA-DAS', icon: '🌊' },
+    ]
   },
   { 
     category: 'Cloud Platforms', 
     icon: Cloud,
     color: '#00B4D8',
-    items: ['Google Earth Engine', 'Sentinel Hub EO', 'MS Planetary Computer', 'EOS Platform', 'ArcGIS Online'] 
+    items: [
+      { name: 'Google Earth Engine', icon: '🌍' },
+      { name: 'Sentinel Hub EO', icon: '🛰️' },
+      { name: 'MS Planetary Computer', icon: '💻' },
+      { name: 'EOS Platform', icon: '📡' },
+      { name: 'ArcGIS Online', icon: '☁️' },
+    ]
   },
   { 
     category: 'Programming & Tools', 
     icon: Code2,
     color: '#2F8F9D',
-    items: ['Python', 'HTML', 'CSS', 'JavaScript', 'Git'] 
+    items: [
+      { name: 'Python', icon: '🐍' },
+      { name: 'HTML', icon: '📄' },
+      { name: 'CSS', icon: '🎨' },
+      { name: 'JavaScript', icon: '⚡' },
+      { name: 'Git', icon: '📦' },
+    ]
   },
   { 
     category: 'Languages', 
     icon: Languages,
     color: '#0F3557',
-    items: ['English (C2)', 'Hindi (Native)', 'Urdu (Native)', 'French (A1)'] 
+    items: [
+      { name: 'English (C2)', icon: '🇬🇧' },
+      { name: 'Hindi (Native)', icon: '🇮🇳' },
+      { name: 'Urdu (Native)', icon: '🇵🇰' },
+      { name: 'French (A1)', icon: '🇫🇷' },
+    ]
   },
 ]
 
 const researchInterests = [
-  'Glaciology', 
-  'Cryosphere Science', 
-  'Glacial Lake Outburst Floods (GLOF)', 
-  'Remote Sensing', 
-  'Earth Observation', 
-  'Climate Change', 
-  'Himalayan Hazards', 
-  'Disaster Risk Reduction'
+  { name: 'Glaciology', icon: '🏔️' },
+  { name: 'Cryosphere Science', icon: '❄️' },
+  { name: 'Glacial Lake Outburst Floods (GLOF)', icon: '🌊' },
+  { name: 'Remote Sensing', icon: '🛰️' },
+  { name: 'Earth Observation', icon: '🌍' },
+  { name: 'Climate Change', icon: '🌡️' },
+  { name: 'Himalayan Hazards', icon: '⛰️' },
+  { name: 'Disaster Risk Reduction', icon: '🛡️' },
 ]
 
 const fadeInUp = {
@@ -58,7 +85,7 @@ export default function About() {
           animate={isInView ? 'visible' : 'hidden'}
           variants={fadeInUp}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
           <span className="inline-block text-xs font-mono text-[#2F8F9D] tracking-[0.3em] uppercase mb-3">
             About Me
@@ -71,96 +98,108 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* Main content grid */}
-        <div className="grid lg:grid-cols-5 gap-10 mb-20">
-          {/* Profile Card */}
-          <motion.div
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            variants={fadeInUp}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2"
-          >
-            <div className="bg-white p-7 h-full rounded-2xl border border-[#D6ECFF] shadow-sm">
-              <div className="relative mb-6 rounded-xl overflow-hidden group shadow-md">
-                <img
-                  src="/assets/img/profile.png"
-                  alt="Suhail Khan — Cloud Geographer"
-                  className="w-full aspect-[4/5] object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F3557]/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg inline-flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-[#2F8F9D]" />
-                    <span className="text-xs text-[#334155]">Saharanpur, India</span>
+        {/* ====== CENTERED PROFILE + INFO CARD ====== */}
+        <motion.div
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          variants={fadeInUp}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-14"
+        >
+          <div className="bg-white rounded-2xl border border-[#D6ECFF] shadow-sm p-8 max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              {/* Profile Image — centered */}
+              <div className="relative flex-shrink-0">
+                <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg border-2 border-[#D6ECFF] group">
+                  <img
+                    src="/assets/img/profile.png"
+                    alt="Suhail Khan — Cloud Geographer"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1.5 rounded-full border border-[#D6ECFF] shadow-sm flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#2F8F9D]" />
+                  <span className="text-xs text-[#334155] font-medium whitespace-nowrap">Saharanpur, India</span>
+                </div>
+              </div>
+
+              {/* Profile Info */}
+              <div className="flex-grow text-center md:text-left">
+                <h3 className="text-2xl font-bold text-[#0F3557] mb-1">Suhail Khan</h3>
+                <p className="text-base text-[#2F8F9D] font-mono mb-5">Cloud Geographer &amp; Data Analyst</p>
+                <div className="space-y-3 text-sm text-[#334155]">
+                  <div className="flex items-center gap-3 justify-center md:justify-start">
+                    <div className="w-8 h-8 rounded-lg bg-[#D6ECFF]/50 flex items-center justify-center flex-shrink-0">
+                      <GraduationCap className="w-4 h-4 text-[#4FA3D9]" />
+                    </div>
+                    <span>B.Sc Geo-Informatics, Amity Univ · CGPA 9.26</span>
+                  </div>
+                  <div className="flex items-center gap-3 justify-center md:justify-start">
+                    <div className="w-8 h-8 rounded-lg bg-[#D6ECFF]/50 flex items-center justify-center flex-shrink-0">
+                      <Compass className="w-4 h-4 text-[#00B4D8]" />
+                    </div>
+                    <span>PG Dip. Disaster Management, Univ of Ladakh</span>
+                  </div>
+                  <div className="flex items-center gap-3 justify-center md:justify-start">
+                    <div className="w-8 h-8 rounded-lg bg-[#D6ECFF]/50 flex items-center justify-center flex-shrink-0">
+                      <Globe className="w-4 h-4 text-[#2F8F9D]" />
+                    </div>
+                    <span>Born: 15 Feb 2003 · Nationality: Indian</span>
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-[#0F3557] mb-1">Suhail Khan</h3>
-              <p className="text-sm text-[#2F8F9D] font-mono mb-5">Cloud Geographer &amp; Data Analyst</p>
-              <div className="space-y-3 text-sm text-[#334155]">
-                <div className="flex items-center gap-3">
-                  <GraduationCap className="w-4 h-4 text-[#4FA3D9] flex-shrink-0" />
-                  <span>B.Sc Geo-Informatics, Amity Univ · CGPA 9.26</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Compass className="w-4 h-4 text-[#00B4D8] flex-shrink-0" />
-                  <span>PG Dip. Disaster Management, Univ of Ladakh</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Globe className="w-4 h-4 text-[#2F8F9D] flex-shrink-0" />
-                  <span>Born: 15 Feb 2003 · Nationality: Indian</span>
-                </div>
-              </div>
             </div>
-          </motion.div>
-
-          {/* Journey Cards */}
-          <div className="lg:col-span-3 space-y-6">
-            {[
-              {
-                icon: Snowflake,
-                color: 'text-[#4FA3D9]',
-                bg: 'bg-[#D6ECFF]/40',
-                title: 'Cryosphere & GLOF Research',
-                desc: 'Focused on high-altitude Glacial Lake Outburst Flood (GLOF) modeling in Ladakh, combining satellite remote sensing with hydrological analysis to assess glacial hazards in the Himalayas.',
-                delay: 0.3,
-              },
-              {
-                icon: Globe,
-                color: 'text-[#00B4D8]',
-                bg: 'bg-[#D6ECFF]/40',
-                title: 'Earth System Science',
-                desc: 'In-depth study of cryosphere dynamics, physical oceanography, atmospheric science, climate change, and geomorphology — bridging physical geography with cutting-edge geospatial technology.',
-                delay: 0.4,
-              },
-              {
-                icon: FlaskConical,
-                color: 'text-[#2F8F9D]',
-                bg: 'bg-[#D6ECFF]/40',
-                title: 'Disaster Management & Community',
-                desc: 'PG Diploma in Disaster Management with a focus on natural hazard assessment. Volunteer at Jax Foundation, working on girls\' child education and environmental issues.',
-                delay: 0.5,
-              },
-            ].map(({ icon: Icon, color, bg, title, desc, delay }) => (
-              <motion.div
-                key={title}
-                initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
-                variants={fadeInUp}
-                transition={{ duration: 0.6, delay }}
-                className="bg-white p-7 rounded-2xl border border-[#D6ECFF] shadow-sm hover:shadow-md transition-shadow flex gap-5"
-              >
-                <div className={`${bg} p-3.5 rounded-xl h-fit flex-shrink-0`}>
-                  <Icon className={`w-6 h-6 ${color}`} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-[#0F3557] mb-2">{title}</h3>
-                  <p className="text-sm text-[#64748b] leading-relaxed">{desc}</p>
-                </div>
-              </motion.div>
-            ))}
           </div>
+        </motion.div>
+
+        {/* ====== JOURNEY CARDS — 3-COLUMN GRID ====== */}
+        <div className="grid md:grid-cols-3 gap-6 mb-20 max-w-6xl mx-auto">
+          {[
+            {
+              icon: Snowflake,
+              color: 'text-[#4FA3D9]',
+              bg: 'bg-[#D6ECFF]/40',
+              borderColor: 'border-[#4FA3D9]/20',
+              title: 'Cryosphere & GLOF Research',
+              desc: 'Focused on high-altitude Glacial Lake Outburst Flood (GLOF) modeling in Ladakh, combining satellite remote sensing with hydrological analysis to assess glacial hazards in the Himalayas.',
+              delay: 0.3,
+            },
+            {
+              icon: Globe,
+              color: 'text-[#00B4D8]',
+              bg: 'bg-[#D6ECFF]/40',
+              borderColor: 'border-[#00B4D8]/20',
+              title: 'Earth System Science',
+              desc: 'In-depth study of cryosphere dynamics, physical oceanography, atmospheric science, climate change, and geomorphology — bridging physical geography with cutting-edge geospatial technology.',
+              delay: 0.4,
+            },
+            {
+              icon: FlaskConical,
+              color: 'text-[#2F8F9D]',
+              bg: 'bg-[#D6ECFF]/40',
+              borderColor: 'border-[#2F8F9D]/20',
+              title: 'Disaster Management & Community',
+              desc: 'PG Diploma in Disaster Management with a focus on natural hazard assessment. Volunteer at Jax Foundation, working on girls\' child education and environmental issues.',
+              delay: 0.5,
+            },
+          ].map(({ icon: Icon, color, bg, borderColor, title, desc, delay }) => (
+            <motion.div
+              key={title}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              variants={fadeInUp}
+              transition={{ duration: 0.6, delay }}
+              className="flex"
+            >
+              <div className={`bg-white p-7 rounded-2xl border border-[#D6ECFF] ${borderColor} shadow-sm hover:shadow-md transition-all flex flex-col text-center h-full`}>
+                <div className={`${bg} p-4 rounded-xl w-fit mx-auto mb-5`}>
+                  <Icon className={`w-7 h-7 ${color}`} />
+                </div>
+                <h3 className="text-lg font-bold text-[#0F3557] mb-3">{title}</h3>
+                <p className="text-sm text-[#64748b] leading-relaxed">{desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* ======================== TECHNICAL SKILLS ======================== */}
@@ -203,19 +242,20 @@ export default function About() {
                       <h4 className="text-base font-semibold text-[#0F3557]">
                         {skillGroup.category}
                       </h4>
-                      <span className="ml-auto text-xs font-mono text-[#94a3b8] bg-[#F5FAFF] px-2 py-1 rounded-md">
+                      <span className="ml-auto text-xs font-mono text-[#94a3b8] bg-[#F5FAFF] px-2.5 py-1 rounded-lg border border-[#E6EDF2]">
                         {skillGroup.items.length}
                       </span>
                     </div>
 
-                    {/* Skill Tags */}
+                    {/* Skill Tags with Icons */}
                     <div className="flex flex-wrap gap-2.5">
                       {skillGroup.items.map((skill) => (
                         <span
-                          key={skill}
-                          className="text-[13px] px-3.5 py-2 rounded-lg bg-[#F5FAFF] text-[#334155] border border-[#E6EDF2] hover:border-[#4FA3D9]/50 hover:text-[#0F3557] hover:bg-[#D6ECFF]/30 hover:shadow-sm transition-all duration-300 cursor-default font-medium"
+                          key={skill.name}
+                          className="inline-flex items-center gap-1.5 text-[13px] px-3.5 py-2 rounded-lg bg-[#F5FAFF] text-[#334155] border border-[#E6EDF2] hover:border-[#4FA3D9]/50 hover:text-[#0F3557] hover:bg-[#D6ECFF]/30 hover:shadow-sm transition-all duration-300 cursor-default font-medium"
                         >
-                          {skill}
+                          <span className="text-sm">{skill.icon}</span>
+                          {skill.name}
                         </span>
                       ))}
                     </div>
@@ -244,13 +284,14 @@ export default function About() {
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {researchInterests.map((interest, i) => (
               <motion.span
-                key={interest}
+                key={interest.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: 0.9 + i * 0.05 }}
-                className="text-sm px-5 py-2.5 rounded-full bg-white border border-[#D6ECFF] text-[#0F3557] hover:border-[#4FA3D9] hover:shadow-md hover:bg-[#F5FAFF] transition-all duration-300 cursor-default font-medium"
+                className="inline-flex items-center gap-2 text-sm px-5 py-2.5 rounded-full bg-white border border-[#D6ECFF] text-[#0F3557] hover:border-[#4FA3D9] hover:shadow-md hover:bg-[#F5FAFF] transition-all duration-300 cursor-default font-medium"
               >
-                {interest}
+                <span>{interest.icon}</span>
+                {interest.name}
               </motion.span>
             ))}
           </div>

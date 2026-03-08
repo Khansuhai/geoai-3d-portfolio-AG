@@ -70,8 +70,8 @@ export default function Navbar() {
             </span>
           </a>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Desktop nav — bigger, more creative buttons */}
+          <div className="hidden md:flex items-center gap-1.5">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.replace('#', '')
               return (
@@ -79,18 +79,18 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className={`relative px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 group ${
+                  className={`relative px-4 py-2.5 rounded-xl text-[13px] font-semibold tracking-wide transition-all duration-300 group ${
                     isActive
                       ? 'text-[#0F3557]'
                       : 'text-[#64748b] hover:text-[#0F3557]'
                   }`}
                 >
-                  {item.label}
+                  <span className="relative z-10">{item.label}</span>
                   {/* Active Indicator */}
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-[#D6ECFF]/60 rounded-full border border-[#4FA3D9]/20"
+                      className="absolute inset-0 bg-[#D6ECFF]/70 rounded-xl border border-[#4FA3D9]/25 shadow-sm"
                       initial={false}
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
@@ -125,7 +125,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleClick(e, item.href)}
-                  className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                  className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                     activeSection === item.href.replace('#', '')
                       ? 'text-[#0F3557] bg-[#D6ECFF]/40'
                       : 'text-[#64748b] hover:text-[#0F3557] hover:bg-[#E6EDF2]/50'
