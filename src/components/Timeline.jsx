@@ -1,130 +1,80 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Briefcase, GraduationCap, Award, FlaskConical, Globe, Activity } from 'lucide-react'
+import { Briefcase } from 'lucide-react'
 
-const timelineData = [
+const experienceData = [
   {
-    year: '2025 (Feb)',
-    title: 'Training of Trainers (TOT) — Glaciers',
-    organization: 'National Institute of Hydrology, Roorkee',
-    description: 'Training on Glaciers & Glacial Lakes Observations for Sustainable Water Resources. Skills acquired in HEC-RAS flood modeling, satellite data analysis, and Google Earth Engine.',
-    icon: FlaskConical,
-    color: 'text-cyan-neon',
-    bgColor: 'bg-cyan-neon/10',
-    borderColor: 'border-cyan-neon/20',
-    tags: ['HEC-RAS', 'Google Earth Engine', 'Water Indices'],
-    side: 'right',
+    role: 'Data Analyst',
+    organization: 'GlacierWatch',
+    location: 'Berlin, Germany',
+    duration: '01 Apr 2024 – Current',
+    website: 'https://glacierwatch.eu',
+    logoDomain: 'glacierwatch.eu',
+    tasks: [
+      'Collected and organized glacier datasets',
+      'Used remote sensing and GIS techniques to analyze glacier change',
+      'Studied temporal changes in glacial landforms',
+      'Evaluated parameters for glacier monitoring'
+    ],
+    side: 'right'
   },
   {
-    year: '2025 (Feb)',
-    title: 'Cryosphere & Climate Hazard Training',
-    organization: 'National Institute of Hydrology, Jammu',
-    description: 'Focused on GLOF modeling, glacier mass balance, and overall climate hazard assessment.',
-    icon: FlaskConical,
-    color: 'text-laser',
-    bgColor: 'bg-laser/10',
-    borderColor: 'border-laser/20',
-    tags: ['GLOF Modeling', 'Mass Balance', 'Climate Hazards'],
-    side: 'left',
+    role: 'Intern',
+    organization: 'ARCUS – Arctic Research Consortium of the United States',
+    location: 'Fairbanks, Alaska, USA',
+    duration: '01 Nov 2023 – Current',
+    logoDomain: 'arcus.org',
+    tasks: [
+      'Collaborated with educators in Arctic Science Education Network',
+      'Participated in citizen science initiatives in the Arctic region',
+      'Supported curriculum development and outreach activities',
+      'Organized educational programs related to Arctic science'
+    ],
+    side: 'left'
   },
   {
-    year: '2024 (Aug) – 2025 (Jun)',
-    title: 'PG Diploma in Disaster Management (PGDDM)',
-    organization: 'University of Ladakh — Kargil Campus',
-    description: 'Focus: Disaster risk assessment, hazard mapping, and remote sensing. Thesis: Glacial Lake Outburst Flood Modeling in Ladakh. CGPA: 8.75/10.',
-    icon: GraduationCap,
-    color: 'text-cyan-neon',
-    bgColor: 'bg-cyan-neon/10',
-    borderColor: 'border-cyan-neon/20',
-    tags: ['CGPA 8.75', 'GLOF Thesis', 'Hazard Assessment'],
-    side: 'right',
+    role: 'Teaching Assistant (Internship)',
+    organization: 'Bright Future Girls Degree College',
+    location: 'Saharanpur, India',
+    duration: '17 May 2023 – 17 Jul 2023',
+    logoDomain: 'brightfuture.edu.in', // Using placeholder domain for clearbit, will fallback
+    tasks: [
+      'Assisted faculty in Remote Sensing and GIS practical sessions',
+      'Prepared course materials and presentations',
+      'Assisted with field surveys',
+      'Delivered classes on Geohazard, Cryosphere and Climate Change'
+    ],
+    side: 'right'
   },
   {
-    year: '2024 (Apr) – Present',
-    title: 'Data Analyst — GlacierWatch Project',
-    organization: 'GlacierWatch, Berlin, Germany',
-    description: 'Glacier data collection and organization. Remote sensing analysis of glacier changes and GIS-based monitoring to support cryosphere research.',
-    icon: Briefcase,
-    color: 'text-glacier',
-    bgColor: 'bg-glacier/10',
-    borderColor: 'border-glacier/20',
-    tags: ['Data Analysis', 'Remote Sensing', 'GIS Monitoring'],
-    side: 'left',
+    role: 'Intern',
+    organization: 'Amity Institute of Geo-Informatics & Remote Sensing (AIGIRS)',
+    location: 'Noida, India',
+    duration: '01 May 2022 – 31 Jul 2022',
+    topic: 'Temporal Change in Sheshnag Lake and Sonasar Lake (Glacial Lake)',
+    logoDomain: 'amity.edu',
+    tasks: [
+      'Analyzed temporal changes in Sheshnag Lake and Sonasar Lake',
+      'Used ArcMap, Google Earth Pro and Google Earth Engine',
+      'Conducted geospatial analysis of glacial lakes',
+      'Developed skills in mapping, spatial analysis and data interpretation'
+    ],
+    side: 'left'
   },
   {
-    year: '2023 (Nov) – Present',
-    title: 'Intern / Research Contributor',
-    organization: 'ARCUS, Alaska, USA',
-    description: 'Contributing to Arctic science education programs, citizen science initiatives, and outreach for Arctic ecosystem awareness.',
-    icon: Briefcase,
-    color: 'text-cyan-neon',
-    bgColor: 'bg-cyan-neon/10',
-    borderColor: 'border-cyan-neon/20',
-    tags: ['Arctic Science', 'Citizen Science', 'Education Outreach'],
-    side: 'right',
-  },
-  {
-    year: '2023 (May – Jul)',
-    title: 'Teaching Assistant',
-    organization: 'Bright Future Girls Degree College, Saharanpur',
-    description: 'Assisted in GIS & Remote Sensing practical classes. Conducted classes on geohazards, cryosphere, and climate change. Participated in field surveys.',
-    icon: Briefcase,
-    color: 'text-glacier',
-    bgColor: 'bg-glacier/10',
-    borderColor: 'border-glacier/20',
-    tags: ['GIS Practicals', 'Geohazards', 'Field Surveys'],
-    side: 'left',
-  },
-  {
-    year: '2022 (May – Jul)',
-    title: 'Research Intern — Glacial Lakes',
-    organization: 'Amity Institute of Geo-Informatics & RS, Noida',
-    description: 'Project: Temporal Change in Sheshnag Lake and Sonasar Lake. Performed glacial lake monitoring and temporal change detection using ArcMap, Google Earth Pro, and GEE.',
-    icon: FlaskConical,
-    color: 'text-cyan-neon',
-    bgColor: 'bg-cyan-neon/10',
-    borderColor: 'border-cyan-neon/20',
-    tags: ['Glacial Lakes', 'Change Detection', 'Google Earth Engine'],
-    side: 'right',
-  },
-  {
-    year: '2021 (Apr – Jun)',
-    title: 'Research Intern — Climate Science',
-    organization: 'Amity Institute of Geo-Informatics & RS, Noida',
-    description: 'Project: The Sun Luminosity and its Impact on Earth’s Climate. Focus on research methodology training, climate data analysis, and term paper writing.',
-    icon: FlaskConical,
-    color: 'text-glacier',
-    bgColor: 'bg-glacier/10',
-    borderColor: 'border-glacier/20',
-    tags: ['Climate Impact', 'Data Analysis', 'Term Paper'],
-    side: 'left',
-  },
-  {
-    type: 'volunteer',
-    period: 'Oct 2020 – Dec 2022',
-    title: 'Active Volunteer',
-    subtitle: 'JAX Foundation (NGO), India',
-    description: 'Dedicated over two years to organizing community awareness programs, focusing on environmental conservation and educational empowerment initiatives.',
-    details: ['Event Organization', 'Community Outreach', 'Leadership'],
-    icon: Globe,
-    color: 'text-glacier',
-    bgColor: 'bg-glacier/10',
-    borderColor: 'border-glacier/20',
-    tags: ['Education Camps', 'COVID Relief', 'Tree Plantation'],
-    side: 'right',
-  },
-  {
-    year: '2021 (Feb – Jul)',
-    title: 'Volunteer',
-    organization: 'JAX Foundation',
-    description: 'Activities included girl child education camps, tree plantation drives, and COVID relief coordination (arranging oxygen cylinders and hospital beds).',
-    icon: Award,
-    color: 'text-glacier',
-    bgColor: 'bg-glacier/10',
-    borderColor: 'border-glacier/20',
-    tags: ['Education Camps', 'COVID Relief', 'Tree Plantation'],
-    side: 'right',
-  },
+    role: 'Intern',
+    organization: 'Amity Institute of Geo-Informatics & Remote Sensing (AIGIRS)',
+    location: 'Noida, India',
+    duration: '01 Apr 2021 – 30 Jun 2021',
+    topic: 'The Sun Luminosity and its Impact on Earth’s Climate',
+    logoDomain: 'amity.edu',
+    tasks: [
+      'Participated in a research training program focused on research methodology and academic writing',
+      'Developed a term paper describing methodology, findings and implications',
+      'Gained experience in research design and analysis techniques'
+    ],
+    side: 'right'
+  }
 ]
 
 const fadeInUp = {
@@ -132,10 +82,9 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-function TimelineItem({ item, index }) {
+function ExperienceItem({ item, index }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
-  const Icon = item.icon
 
   return (
     <div ref={ref} className="relative mb-12 md:mb-16">
@@ -154,38 +103,64 @@ function TimelineItem({ item, index }) {
             : 'md:ml-auto md:pl-0'
         } pl-12 md:pl-0`}
       >
-        <div className={`glass-card p-6 border ${item.borderColor}`}>
-          {/* Year badge */}
-          <div className="flex items-center gap-3 mb-3">
-            <div className={`${item.bgColor} p-2 rounded-lg`}>
-              <Icon className={`w-4 h-4 ${item.color}`} />
+        <div className="glass-card p-6 border border-cyan-neon/20 hover:border-glacier/40 transition-colors group">
+          
+          {/* Header Row */}
+          <div className="flex items-start gap-4 mb-4">
+            {/* Logo */}
+            <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center p-1 border border-white/5 flex-shrink-0">
+               <img 
+                 src={`https://logo.clearbit.com/${item.logoDomain}`} 
+                 alt={`${item.organization} logo`}
+                 className="w-full h-full object-contain"
+                 onError={(e) => {
+                   e.target.style.display = 'none';
+                   e.target.nextSibling.style.display = 'block';
+                 }}
+               />
+               <Briefcase className="w-6 h-6 text-glacier hidden" />
             </div>
-            <span className={`text-xs font-mono ${item.color} tracking-wider`}>
-              {item.year || item.period}
-            </span>
+
+            {/* Role & Org */}
+            <div>
+              <h3 className="text-xl font-bold text-text-primary mb-1">
+                {item.role}
+              </h3>
+              <p className="text-sm font-medium text-cyan-neon">
+                {item.organization}
+              </p>
+            </div>
           </div>
 
-          <h3 className="text-lg font-bold text-text-primary mb-1">
-            {item.title}
-          </h3>
-          <p className="text-sm text-text-muted font-medium mb-3">
-            {item.organization || item.subtitle}
-          </p>
-          <p className="text-sm text-text-secondary leading-relaxed mb-4">
-            {item.description}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {item.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[11px] px-2 py-1 rounded-md bg-space-600/40 text-text-muted border border-space-500/20"
-              >
-                {tag}
-              </span>
-            ))}
+          {/* Details Row */}
+          <div className="flex flex-col gap-1 mb-4 text-xs font-mono text-text-muted">
+            <span className="text-glacier">Duration: {item.duration}</span>
+            <span>Location: {item.location}</span>
           </div>
+
+          {/* Topic (optional) */}
+          {item.topic && (
+            <div className="mb-4 bg-glacier/5 border-l-2 border-cyan-neon p-3 rounded-r-lg">
+              <p className="text-sm text-text-primary font-medium">
+                <span className="text-glacier text-xs uppercase tracking-wider block mb-1">Topic</span>
+                {item.topic}
+              </p>
+            </div>
+          )}
+
+          {/* Tasks */}
+          <div>
+            <h4 className="text-xs font-mono uppercase text-glacier tracking-wider mb-2">Tasks</h4>
+            <ul className="space-y-2">
+              {item.tasks.map((task, i) => (
+                <li key={i} className="text-sm text-text-secondary flex items-start gap-2">
+                  <span className="text-cyan-neon mt-1 text-xs">•</span>
+                  <span className="leading-relaxed">{task}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
       </motion.div>
     </div>
@@ -211,13 +186,13 @@ export default function Timeline() {
           className="text-center mb-16"
         >
           <span className="inline-block text-xs font-mono text-cyan-neon tracking-[0.3em] uppercase mb-4">
-            // Experience &amp; Volunteering
+            // Professional Journey
           </span>
           <h2 className="text-5xl sm:text-6xl font-bold mb-6">
-            <span className="gradient-text">Timeline</span>
+            <span className="gradient-text">Work Experience</span>
           </h2>
           <p className="text-text-secondary text-lg sm:text-xl max-w-3xl mx-auto">
-            My academic progression and professional journey in the geospatial field.
+            Practical application of my geospatial and remote sensing skills across institutions.
           </p>
         </motion.div>
 
@@ -226,8 +201,8 @@ export default function Timeline() {
           <div className="timeline-line hidden md:block" />
           <div className="absolute left-6 md:hidden top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-glacier to-transparent" />
 
-          {timelineData.map((item, index) => (
-            <TimelineItem key={item.title} item={item} index={index} />
+          {experienceData.map((item, index) => (
+            <ExperienceItem key={index} item={item} index={index} />
           ))}
         </div>
       </div>

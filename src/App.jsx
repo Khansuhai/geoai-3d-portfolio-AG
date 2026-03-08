@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Education from './components/Education'
 import Timeline from './components/Timeline'
+import Volunteering from './components/Volunteering'
 import Media from './components/Media'
 import Awards from './components/Awards'
 import Contact from './components/Contact'
@@ -37,6 +38,7 @@ export default function App() {
         <About />
         <Education />
         <Timeline />
+        <Volunteering />
         <Media />
         <Awards />
         <Contact />
