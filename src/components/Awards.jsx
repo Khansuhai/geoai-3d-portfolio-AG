@@ -1,37 +1,12 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Award, CheckCircle2 } from 'lucide-react'
-
-function OrgLogo({ domain, alt, orgName }) {
-  const handleError = (e) => {
-    const img = e.target
-    if (img.src.includes('google.com')) {
-      img.src = `https://logo.clearbit.com/${domain}`
-    } else {
-      img.style.display = 'none'
-      img.nextSibling.style.display = 'flex'
-    }
-  }
-  const initial = orgName ? orgName.charAt(0).toUpperCase() : 'O'
-  return (
-    <>
-      <img
-        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
-        alt={alt}
-        className="w-8 h-8 object-contain"
-        onError={handleError}
-      />
-      <div className="w-8 h-8 bg-gradient-to-br from-[#4FA3D9] to-[#2F8F9D] text-white hidden items-center justify-center rounded-md text-sm font-bold">
-        {initial}
-      </div>
-    </>
-  )
-}
+import { CheckCircle2 } from 'lucide-react'
 
 const certificationsData = [
   {
     organization: 'NASA ARSET',
-    domain: 'nasa.gov',
+    logo: null,
+    logoDomain: 'nasa.gov',
     certs: [
       'Satellite Observations for Analyzing Natural Hazards on Small Island Nations',
       'Monitoring Coastal & Estuarine Water Quality: Transitioning From MODIS to VIIRS',
@@ -45,7 +20,8 @@ const certificationsData = [
   },
   {
     organization: 'ESRI',
-    domain: 'esri.com',
+    logo: null,
+    logoDomain: 'esri.com',
     certs: [
       'Going Places With Spatial Analysis',
       'Cartography',
@@ -56,7 +32,8 @@ const certificationsData = [
   },
   {
     organization: 'Geo-University',
-    domain: 'geo.university',
+    logo: '/assets/img/GEO%20UNIVERSITY%20LOGO.jpg',
+    logoDomain: 'geo.university',
     certs: [
       'Hyperspectral Thermal Image Unmixing',
       'Introduction to LaTex',
@@ -73,7 +50,8 @@ const certificationsData = [
   },
   {
     organization: 'Geological Survey of India (GSI)',
-    domain: 'gsi.gov.in',
+    logo: '/assets/img/GSI%20LOGO.jpg',
+    logoDomain: 'gsi.gov.in',
     certs: [
       'Fundamental of GIS',
       'Application of Remote Sensing in Mineral Exploration',
@@ -82,35 +60,40 @@ const certificationsData = [
   },
   {
     organization: 'ISRO',
-    domain: 'isro.gov.in',
+    logo: '/assets/img/ISRO%20LOGO.png',
+    logoDomain: 'isro.gov.in',
     certs: [
       'Applications of Satellite Altimetry for Inland Water Bodies'
     ]
   },
   {
     organization: 'IIT Roorkee',
-    domain: 'iitr.ac.in',
+    logo: '/assets/img/IIT%20ROOORKE%20%20LOGO.jpg',
+    logoDomain: 'iitr.ac.in',
     certs: [
       'Global Navigation Satellite System & Application'
     ]
   },
   {
     organization: 'Copernicus & Mercator Ocean',
-    domain: 'copernicus.eu',
+    logo: null,
+    logoDomain: 'copernicus.eu',
     certs: [
       'The Workshop of "WEkEO for Forest Monitoring"'
     ]
   },
   {
     organization: 'APECS & IPRN',
-    domain: 'apecs.is',
+    logo: null,
+    logoDomain: 'apecs.is',
     certs: [
       'Impact of Climate Change on Polar Regions'
     ]
   },
   {
     organization: 'EU / DLR / Europlanet',
-    domain: 'europlanet-society.org',
+    logo: null,
+    logoDomain: 'europlanet-society.org',
     certs: [
       'GMAP Planetary Geological Mapping Winter School (2023)'
     ]
@@ -120,6 +103,42 @@ const certificationsData = [
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
+}
+
+/* Logo component: local file → Google favicon → Clearbit → initial letter */
+function OrgLogo({ localLogo, domain, alt, orgName }) {
+  const handleError = (e) => {
+    const img = e.target
+    if (img.dataset.source === 'local') {
+      img.dataset.source = 'google'
+      img.src = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
+    } else if (img.dataset.source === 'google') {
+      img.dataset.source = 'clearbit'
+      img.src = `https://logo.clearbit.com/${domain}`
+    } else {
+      img.style.display = 'none'
+      img.nextSibling.style.display = 'flex'
+    }
+  }
+
+  const initial = orgName ? orgName.charAt(0).toUpperCase() : 'O'
+  const initialSrc = localLogo || `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
+  const initialSource = localLogo ? 'local' : 'google'
+
+  return (
+    <>
+      <img
+        src={initialSrc}
+        data-source={initialSource}
+        alt={alt}
+        className="w-8 h-8 object-contain"
+        onError={handleError}
+      />
+      <div className="w-8 h-8 bg-gradient-to-br from-[#4FA3D9] to-[#2F8F9D] text-white hidden items-center justify-center rounded-md text-sm font-bold">
+        {initial}
+      </div>
+    </>
+  )
 }
 
 export default function Awards() {
@@ -163,7 +182,12 @@ export default function Awards() {
                 {/* Organization Header */}
                 <div className="flex items-center gap-4 mb-5 pb-5 border-b border-[#E6EDF2]">
                  <div className="w-12 h-12 rounded-lg bg-[#F5FAFF] flex items-center justify-center overflow-hidden flex-shrink-0 border border-[#D6ECFF]">
-                    <OrgLogo domain={group.domain} alt={`${group.organization} logo`} orgName={group.organization} />
+                    <OrgLogo 
+                      localLogo={group.logo} 
+                      domain={group.logoDomain} 
+                      alt={`${group.organization} logo`} 
+                      orgName={group.organization} 
+                    />
                   </div>
                   <h3 className="text-lg font-bold text-[#0F3557] leading-tight">
                     {group.organization}

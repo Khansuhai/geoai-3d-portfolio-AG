@@ -1,6 +1,5 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Briefcase } from 'lucide-react'
 
 const experienceData = [
   {
@@ -8,7 +7,7 @@ const experienceData = [
     organization: 'GlacierWatch',
     location: 'Berlin, Germany',
     duration: 'Apr 2024 – Present',
-    logoDomain: 'glacierwatch.eu',
+    logo: '/assets/img/GLACIEERWATCH%20LOGO.png',
     tasks: [
       'Collected and organized glacier datasets',
       'Used remote sensing and GIS techniques to analyze glacier change',
@@ -21,7 +20,7 @@ const experienceData = [
     organization: 'ARCUS – Arctic Research Consortium of the United States',
     location: 'Fairbanks, Alaska, USA',
     duration: 'Nov 2023 – Present',
-    logoDomain: 'arcus.org',
+    logo: '/assets/img/ARCUS%20LOGO%201.png',
     tasks: [
       'Collaborated with educators in Arctic Science Education Network',
       'Participated in citizen science initiatives in the Arctic region',
@@ -34,7 +33,7 @@ const experienceData = [
     organization: 'Bright Future Girls Degree College',
     location: 'Saharanpur, India',
     duration: 'May 2023 – Jul 2023',
-    logoDomain: 'brightfuture.edu.in',
+    logo: '/assets/img/BRIGHT%20FUTURE%20GIRLS%20DEGREE%20COLLEEGE.png',
     tasks: [
       'Assisted faculty in Remote Sensing and GIS practical sessions',
       'Prepared course materials and presentations',
@@ -47,37 +46,6 @@ const experienceData = [
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
-}
-
-/* Helper: tries Google favicon, then Clearbit, then shows first-letter initial */
-function OrgLogo({ domain, alt, orgName }) {
-  const handleError = (e) => {
-    const img = e.target
-    // If Google favicon fails, try Clearbit
-    if (img.src.includes('google.com')) {
-      img.src = `https://logo.clearbit.com/${domain}`
-    } else {
-      // Both failed, show initial letter
-      img.style.display = 'none'
-      img.nextSibling.style.display = 'flex'
-    }
-  }
-
-  const initial = orgName ? orgName.charAt(0).toUpperCase() : 'O'
-
-  return (
-    <>
-      <img
-        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
-        alt={alt}
-        className="w-full h-full object-contain"
-        onError={handleError}
-      />
-      <div className="w-full h-full bg-gradient-to-br from-[#4FA3D9] to-[#2F8F9D] text-white hidden items-center justify-center rounded-full text-xl font-bold">
-        {initial}
-      </div>
-    </>
-  )
 }
 
 export default function Timeline() {
@@ -124,7 +92,11 @@ export default function Timeline() {
                     {item.duration}
                   </span>
                   <div className="w-16 h-16 rounded-full bg-[#F5FAFF] p-1.5 shadow-md border border-[#D6ECFF] group-hover:scale-105 transition-transform duration-500 overflow-hidden flex items-center justify-center">
-                    <OrgLogo domain={item.logoDomain} alt={`${item.organization} logo`} orgName={item.organization} />
+                    <img 
+                      src={item.logo} 
+                      alt={`${item.organization} logo`}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                 </div>
 

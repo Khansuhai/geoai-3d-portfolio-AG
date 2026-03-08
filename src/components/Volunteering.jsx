@@ -1,6 +1,5 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Globe } from 'lucide-react'
 
 const volunteeringData = [
   {
@@ -8,7 +7,7 @@ const volunteeringData = [
     organization: 'JAX Foundation',
     location: 'India',
     duration: 'Oct 2020 – Dec 2022',
-    logoDomain: 'jaxfoundation.org',
+    logo: '/assets/img/JAX%20FOUNDATION%20LOGO.png',
     tasks: [
       'Participated in volunteer activities and collaborative initiatives',
       'Contributed to community and organizational programs'
@@ -19,32 +18,6 @@ const volunteeringData = [
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
-}
-
-function OrgLogo({ domain, alt, orgName }) {
-  const handleError = (e) => {
-    const img = e.target
-    if (img.src.includes('google.com')) {
-      img.src = `https://logo.clearbit.com/${domain}`
-    } else {
-      img.style.display = 'none'
-      img.nextSibling.style.display = 'flex'
-    }
-  }
-  const initial = orgName ? orgName.charAt(0).toUpperCase() : 'O'
-  return (
-    <>
-      <img
-        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
-        alt={alt}
-        className="w-full h-full object-contain"
-        onError={handleError}
-      />
-      <div className="w-full h-full bg-gradient-to-br from-[#4FA3D9] to-[#2F8F9D] text-white hidden items-center justify-center rounded-xl text-xl font-bold">
-        {initial}
-      </div>
-    </>
-  )
 }
 
 export default function Volunteering() {
@@ -89,7 +62,11 @@ export default function Volunteering() {
                 {/* Header */}
                 <div className="flex items-center gap-5 mb-6 pb-6 border-b border-[#D6ECFF]">
                   <div className="w-16 h-16 rounded-xl bg-[#F5FAFF] flex items-center justify-center overflow-hidden flex-shrink-0 border border-[#D6ECFF] p-2 shadow-sm">
-                    <OrgLogo domain={item.logoDomain} alt={`${item.organization} logo`} orgName={item.organization} />
+                    <img 
+                      src={item.logo} 
+                      alt={`${item.organization} logo`}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-[#0F3557] mb-1">
