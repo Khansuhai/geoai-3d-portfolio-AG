@@ -21,7 +21,7 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="contact" className="relative z-10 py-8 bg-[#0F3557]">
+    <section id="contact" className="relative z-10 py-16 bg-[#0F3557]">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
@@ -44,7 +44,7 @@ export default function Contact() {
 
         <div className="max-w-4xl mx-auto">
           {/* Contact Cards */}
-          <div className="grid sm:grid-cols-3 gap-4 mb-12">
+          <div className="grid sm:grid-cols-3 gap-6 mb-14">
             {[
               {
                 icon: Mail,
@@ -80,7 +80,7 @@ export default function Contact() {
               >
                 {item.href ? (
                   <a href={item.href} className="block group">
-                    <div className="bg-white/10 backdrop-blur-md p-5 text-center h-full rounded-2xl border border-white/10 hover:border-[#4FA3D9]/40 transition-all">
+                    <div className="bg-white/10 backdrop-blur-md p-6 text-center h-full rounded-2xl border border-white/10 hover:border-[#4FA3D9]/40 transition-all">
                       <div className={`${item.bgColor} p-3 rounded-xl w-fit mx-auto mb-3`}>
                         <item.icon className={`w-5 h-5 ${item.color}`} />
                       </div>
@@ -91,7 +91,7 @@ export default function Contact() {
                     </div>
                   </a>
                 ) : (
-                  <div className="bg-white/10 backdrop-blur-md p-5 text-center h-full rounded-2xl border border-white/10">
+                  <div className="bg-white/10 backdrop-blur-md p-6 text-center h-full rounded-2xl border border-white/10">
                     <div className={`${item.bgColor} p-3 rounded-xl w-fit mx-auto mb-3`}>
                       <item.icon className={`w-5 h-5 ${item.color}`} />
                     </div>
@@ -114,7 +114,7 @@ export default function Contact() {
             <p className="text-xs font-mono text-[#94a3b8] tracking-wider uppercase mb-5">
               Connect on Social
             </p>
-            <div className="flex items-center justify-center gap-4 flex-wrap">
+            <div className="flex items-center justify-center gap-5 flex-wrap">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
