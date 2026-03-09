@@ -81,7 +81,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="about" className="relative z-10 py-20 bg-[#E6EDF2]/30">
+    <section id="about" className="relative z-10 py-24 bg-[#E6EDF2]/30">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
@@ -108,42 +108,42 @@ export default function About() {
           animate={isInView ? 'visible' : 'hidden'}
           variants={fadeInUp}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-14"
+          className="mb-16 flex justify-center"
         >
-          <div className="bg-white rounded-2xl border border-[#D6ECFF] shadow-sm p-10 max-w-3xl mx-auto">
+          <div className="bg-white rounded-2xl border border-[#D6ECFF] shadow-md p-12 w-full max-w-xl">
             <div className="flex flex-col items-center text-center">
               {/* Profile Image — truly centered */}
-              <div className="relative mb-6">
-                <div className="w-40 h-40 rounded-full overflow-hidden shadow-lg border-4 border-[#D6ECFF] group">
+              <div className="relative mb-8">
+                <div className="w-44 h-44 rounded-full overflow-hidden shadow-xl border-4 border-[#D6ECFF] group">
                   <img
                     src="/assets/img/profile.png"
                     alt="Suhail Khan — Cloud Geographer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full border border-[#D6ECFF] shadow-sm flex items-center gap-1.5">
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1.5 rounded-full border border-[#D6ECFF] shadow-sm flex items-center gap-1.5">
                   <MapPin className="w-3 h-3 text-[#2F8F9D]" />
-                  <span className="text-[11px] text-[#334155] font-medium whitespace-nowrap">Saharanpur, India</span>
+                  <span className="text-xs text-[#334155] font-medium whitespace-nowrap">Saharanpur, India</span>
                 </div>
               </div>
 
               {/* Name & Title */}
-              <h3 className="text-2xl font-bold text-[#0F3557] mb-1">Suhail Khan</h3>
-              <p className="text-base text-[#2F8F9D] font-mono mb-6">Cloud Geographer &amp; Data Analyst</p>
+              <h3 className="text-2xl font-bold text-[#0F3557] mb-1 mt-2">Suhail Khan</h3>
+              <p className="text-base text-[#2F8F9D] font-mono mb-8">Cloud Geographer &amp; Data Analyst</p>
 
-              {/* Info Chips */}
-              <div className="flex flex-wrap justify-center gap-3">
-                <div className="flex items-center gap-2 bg-[#F5FAFF] px-4 py-2.5 rounded-xl border border-[#E6EDF2]">
-                  <GraduationCap className="w-4 h-4 text-[#4FA3D9]" />
-                  <span className="text-sm text-[#334155]">B.Sc Geo-Informatics · CGPA 9.26</span>
+              {/* Info Chips — stacked for proper centering */}
+              <div className="flex flex-col items-center gap-3 w-full">
+                <div className="flex items-center gap-2 bg-[#F5FAFF] px-5 py-3 rounded-xl border border-[#E6EDF2] w-full justify-center">
+                  <GraduationCap className="w-4 h-4 text-[#4FA3D9] flex-shrink-0" />
+                  <span className="text-sm text-[#334155]">B.Sc Geo-Informatics &middot; CGPA 9.26</span>
                 </div>
-                <div className="flex items-center gap-2 bg-[#F5FAFF] px-4 py-2.5 rounded-xl border border-[#E6EDF2]">
-                  <Compass className="w-4 h-4 text-[#00B4D8]" />
-                  <span className="text-sm text-[#334155]">PG Dip. Disaster Management</span>
+                <div className="flex items-center gap-2 bg-[#F5FAFF] px-5 py-3 rounded-xl border border-[#E6EDF2] w-full justify-center">
+                  <Compass className="w-4 h-4 text-[#00B4D8] flex-shrink-0" />
+                  <span className="text-sm text-[#334155]">PG Dip. Disaster Management, Univ. of Ladakh</span>
                 </div>
-                <div className="flex items-center gap-2 bg-[#F5FAFF] px-4 py-2.5 rounded-xl border border-[#E6EDF2]">
-                  <Globe className="w-4 h-4 text-[#2F8F9D]" />
-                  <span className="text-sm text-[#334155]">Born: 15 Feb 2003 · Indian</span>
+                <div className="flex items-center gap-2 bg-[#F5FAFF] px-5 py-3 rounded-xl border border-[#E6EDF2] w-full justify-center">
+                  <Globe className="w-4 h-4 text-[#2F8F9D] flex-shrink-0" />
+                  <span className="text-sm text-[#334155]">Born: 15 Feb 2003 &middot; Nationality: Indian</span>
                 </div>
               </div>
             </div>
